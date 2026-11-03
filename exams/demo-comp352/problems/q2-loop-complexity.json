@@ -1,0 +1,9 @@
+{
+  "type": "text",
+  "title": "Running time of a nested loop",
+  "prompt": "<p>What is the worst-case running time of the code fragment below, as a function of <code>n</code>? Give your answer in Big-O notation, e.g. <code>O(n^2)</code>.</p>",
+  "image": { "src": "../images/q2-loop.svg", "alt": "Code: int count = 0; for (int i = 1; i < n; i *= 2) for (int j = 0; j < n; j++) count++;", "width": "460px" },
+  "placeholder": "O(...)",
+  "multiline": false,
+  "maxLength": 60
+}

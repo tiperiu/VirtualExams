@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "Both subtrees are listed before their root, so the root 8 comes last. Partial credit: the fraction of positions you got right."
+}

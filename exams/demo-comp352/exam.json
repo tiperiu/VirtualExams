@@ -1,0 +1,29 @@
+{
+  "examId": "COMP352-F26-DEMO",
+  "course": {
+    "code": "COMP 352",
+    "title": "Data Structures and Algorithms",
+    "term": "Fall 2026"
+  },
+  "title": "Demo Quiz",
+  "examType": "Quiz",
+  "mode": "practice",
+  "date": "2026-11-10",
+  "startTime": "10:15",
+  "durationMinutes": 30,
+  "location": "Online",
+  "studentIdPattern": "^\\d{8}$",
+  "studentIdHint": "8-digit student ID",
+  "studentIdError": "Your student ID should have 8 digits.",
+  "instructions": [
+    "Answer all questions. You can move back and forth between questions until you submit.",
+    "Your answers are kept in this browser if the page is reloaded.",
+    "Closed book. No calculators are needed."
+  ],
+  "questions": [
+    { "id": "q1", "type": "mcq",            "points": 2, "problem": "problems/q1-bst-successor.json", "solution": "solutions/q1-bst-successor.json" },
+    { "id": "q2", "type": "text",           "points": 3, "problem": "problems/q2-loop-complexity.json", "solution": "solutions/q2-loop-complexity.json" },
+    { "id": "q3", "type": "tree-traversal", "points": 2, "problem": "problems/q3-preorder.json", "solution": "solutions/q3-preorder.json" },
+    { "id": "q4", "type": "tree-traversal", "points": 3, "problem": "problems/q4-postorder.json", "solution": "solutions/q4-postorder.json" }
+  ]
+}

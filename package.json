@@ -1,0 +1,11 @@
+{
+  "name": "virtual-exams",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Web-based exam and practice-exam framework with pluggable question types",
+  "type": "module",
+  "scripts": {
+    "pack": "python3 tools/pack_exam.py",
+    "grade": "node tools/grade.mjs"
+  }
+}

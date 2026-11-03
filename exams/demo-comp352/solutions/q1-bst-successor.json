@@ -1,0 +1,4 @@
+{
+  "correct": ["b"],
+  "explanation": "The successor of a node with a right subtree is the smallest key in that subtree: go right once (30), then left as far as possible (25, then 22)."
+}

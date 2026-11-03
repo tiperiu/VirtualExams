@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Virtual Exam</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23912338'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/exam.css">
+</head>
+<body>
+  <div id="app"><p class="loading">Loading exam…</p></div>
+  <noscript>This exam needs JavaScript enabled.</noscript>
+
+  <!-- Plain scripts (not modules) so the page also works when opened directly from disk.
+       Order matters: helpers, then question types (view + grader), then the shell. -->
+  <script src="js/util.js"></script>
+  <script src="js/types/common.js"></script>
+  <script src="js/types/mcq/view.js"></script>
+  <script src="js/types/mcq/grader.js"></script>
+  <script src="js/types/text/view.js"></script>
+  <script src="js/types/text/grader.js"></script>
+  <script src="js/types/tree-traversal/tree.js"></script>
+  <script src="js/types/tree-traversal/view.js"></script>
+  <script src="js/types/tree-traversal/grader.js"></script>
+  <script src="js/grading/grade-exam.js"></script>
+  <script src="js/exam-loader.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

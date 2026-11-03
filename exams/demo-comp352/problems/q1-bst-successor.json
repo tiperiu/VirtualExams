@@ -1,0 +1,13 @@
+{
+  "type": "mcq",
+  "title": "In-order successor in a BST",
+  "prompt": "<p>Consider the binary search tree below. Which key is the <strong>in-order successor</strong> of <code>20</code>?</p>",
+  "image": { "src": "../images/q1-bst.svg", "alt": "Binary search tree with root 20; left subtree 10 (5, 15); right subtree 30 with children 25 (22, 27) and 35.", "width": "420px" },
+  "multiple": false,
+  "options": [
+    { "id": "a", "text": "15" },
+    { "id": "b", "text": "22" },
+    { "id": "c", "text": "25" },
+    { "id": "d", "text": "30" }
+  ]
+}

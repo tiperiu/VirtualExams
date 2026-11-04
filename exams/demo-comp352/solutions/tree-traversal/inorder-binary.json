@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "X, E, N, B, R, T, J, C — N has only a right child (B), so B comes right after N; T has only a right child (C), whose left child J comes before C."
+}

@@ -1,0 +1,23 @@
+{
+  "type": "mcq",
+  "title": "Complexity (hard): recursion",
+  "prompt": "<p>What is the running time of <code>f(n)</code>? Assume <code>work()</code> takes constant time.</p><pre><code>void f(int n) {\n    if (n &lt;= 1) return;\n    for (int i = 0; i &lt; n; i++)\n        work();\n    f(n / 2);\n    f(n / 2);\n}</code></pre>",
+  "options": [
+    {
+      "id": "a",
+      "text": "O(n)"
+    },
+    {
+      "id": "b",
+      "text": "O(n log n)"
+    },
+    {
+      "id": "c",
+      "text": "O(n²)"
+    },
+    {
+      "id": "d",
+      "text": "O(2ⁿ)"
+    }
+  ]
+}

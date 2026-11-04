@@ -7,15 +7,8 @@
 'use strict';
 const { h } = VE.util;
 const { renderPrompt } = VE;
-const { normalizeTree, layoutTree, isBinary, TRAVERSAL_NAMES } = VE.tree;
-
-const LEVEL = 78;      // px between tree levels
-const PAD = 34;        // px top/bottom padding in the tree area
-const GUTTER = 26;     // px left/right padding, so edge nodes are never clipped
-// px minimum horizontal space per layout column. In the binary (in-order) layout, nodes on the
-// same level are at least two columns apart, so columns can be narrower than a node.
-const MIN_COL_BINARY = 30;
-const MIN_COL_GENERAL = 50;
+const { normalizeTree, isBinary, TRAVERSAL_NAMES } = VE.tree;
+const { drawTree } = VE;
 
 function isAnswered(response) {
   return !!(response && Array.isArray(response.sequence) && response.sequence.length);
@@ -24,7 +17,6 @@ function isAnswered(response) {
 function render({ container, problem, response, onChange, baseUrl }) {
   const { root, byId } = normalizeTree(problem.tree);
   const binary = problem.binary ?? isBinary(root);
-  const { nodes, edges, cols, maxDepth } = layoutTree(root, binary);
   const orderName = TRAVERSAL_NAMES[problem.traversal] || problem.traversal;
   const label = (id) => byId.get(id)?.label ?? id;
 
@@ -37,43 +29,16 @@ function render({ container, problem, response, onChange, baseUrl }) {
     h('strong', {}, orderName), '. Drag a chip to reorder it, or drag it out of the box to remove it.'));
 
   // ---- tree area -------------------------------------------------------------------------
-  const height = maxDepth * LEVEL + 2 * PAD;
-  const yOf = (d) => PAD + d * LEVEL;
-  const pos = new Map(nodes.map((n) => [n.id, n]));
-
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  svg.setAttribute('class', 'tt-edges');
-  svg.setAttribute('viewBox', `0 0 100 ${height}`);
-  svg.setAttribute('preserveAspectRatio', 'none');
-  svg.setAttribute('aria-hidden', 'true');
-  svg.style.left = `${GUTTER}px`;
-  svg.style.width = `calc(100% - ${2 * GUTTER}px)`;
-  for (const [a, b] of edges) {
-    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', pos.get(a).x * 100); line.setAttribute('y1', yOf(pos.get(a).depth));
-    line.setAttribute('x2', pos.get(b).x * 100); line.setAttribute('y2', yOf(pos.get(b).depth));
-    line.setAttribute('vector-effect', 'non-scaling-stroke');
-    svg.append(line);
-  }
-
-  const canvas = h('div', { class: 'tt-canvas', style: { height: `${height}px`, minWidth: `${cols * (binary ? MIN_COL_BINARY : MIN_COL_GENERAL)}px` } }, svg);
-  const nodeEls = new Map();
-  for (const n of nodes) {
-    const el = h('button', {
-      type: 'button', class: 'tt-node', 'data-id': n.id,
-      'aria-label': `Node ${n.label}`,
-      style: { left: `calc(${GUTTER}px + ${n.x} * (100% - ${2 * GUTTER}px))`, top: `${yOf(n.depth)}px` },
-    }, n.label);
-    el.addEventListener('pointerdown', (e) => startPointer(e, { id: n.id, fromIndex: null }));
-    el.addEventListener('click', () => {
+  const { element: treeEl, nodeEls } = drawTree({
+    root, binary,
+    onPointerDown: (e, id) => startPointer(e, { id, fromIndex: null }),
+    onClick: (id) => {
       if (suppressClick) return;
-      if (!allowRepeat && seq.includes(n.id)) return;
-      commit([...seq, n.id]);
-    });
-    nodeEls.set(n.id, el);
-    canvas.append(el);
-  }
-  container.append(h('div', { class: 'tt-tree', role: 'group', 'aria-label': 'Tree' }, canvas));
+      if (!allowRepeat && seq.includes(id)) return;
+      commit([...seq, id]);
+    },
+  });
+  container.append(treeEl);
 
   // ---- answer strip ----------------------------------------------------------------------
   const count = h('span', { class: 'tt-count' });
@@ -105,7 +70,7 @@ function render({ container, problem, response, onChange, baseUrl }) {
       return chip;
     });
     if (!seq.length) tray.append(h('li', { class: 'tt-empty' }, 'Drop nodes here, in order'));
-    count.textContent = `${seq.length} / ${nodes.length}`;
+    count.textContent = `${seq.length} / ${byId.size}`;
     for (const [id, el] of nodeEls) {
       const used = seq.includes(id);
       el.classList.toggle('used', used);

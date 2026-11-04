@@ -1,0 +1,3 @@
+{
+  "explanation": "Each swap of insertion sort removes exactly one inversion, so the answer is the number of pairs that are out of order: 3 (for 5) + 1 (for 2) + 3 (for 9) + 1 (for 6) = 8."
+}

@@ -16,6 +16,11 @@ const GRADER_SCRIPTS = [
   'js/types/mcq/grader.js',
   'js/types/text/grader.js',
   'js/types/tree-traversal/grader.js',
+  'js/types/tree-array/array.js',
+  'js/types/tree-array/grader.js',
+  'js/types/sorting/algorithms.js',
+  'js/types/sort-count/grader.js',
+  'js/types/sort-trace/grader.js',
   'js/grading/grade-exam.js',
 ];
 const sandbox = vm.createContext({});

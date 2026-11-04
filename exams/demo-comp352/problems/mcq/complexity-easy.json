@@ -1,0 +1,23 @@
+{
+  "type": "mcq",
+  "title": "Complexity (easy): nested loops",
+  "prompt": "<p>What is the worst-case running time of this fragment, as a function of <code>n</code>?</p><pre><code>int sum = 0;\nfor (int i = 0; i &lt; n; i++)\n    for (int j = i; j &lt; n; j++)\n        sum += a[i] * a[j];</code></pre>",
+  "options": [
+    {
+      "id": "a",
+      "text": "O(n)"
+    },
+    {
+      "id": "b",
+      "text": "O(n log n)"
+    },
+    {
+      "id": "c",
+      "text": "O(n²)"
+    },
+    {
+      "id": "d",
+      "text": "O(n³)"
+    }
+  ]
+}

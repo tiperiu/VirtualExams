@@ -1,0 +1,58 @@
+{
+  "type": "tree-array",
+  "task": "heap-insert",
+  "heap": "min",
+  "title": "Min-heap: array after an insertion",
+  "prompt": "<p>The tree below is a <strong>min-heap</strong>. Insert the key <strong>4</strong> (add it at the end, then let it move up). Show the array that stores the heap afterwards, with the root at index 0.</p>",
+  "insert": [
+    {
+      "id": "k4",
+      "label": "4"
+    }
+  ],
+  "slots": 12,
+  "tree": {
+    "id": "k3",
+    "label": "3",
+    "children": [
+      {
+        "id": "k8",
+        "label": "8",
+        "children": [
+          {
+            "id": "k12",
+            "label": "12",
+            "children": [
+              {
+                "id": "k15",
+                "label": "15"
+              },
+              {
+                "id": "k14",
+                "label": "14"
+              }
+            ]
+          },
+          {
+            "id": "k10",
+            "label": "10"
+          }
+        ]
+      },
+      {
+        "id": "k5",
+        "label": "5",
+        "children": [
+          {
+            "id": "k7",
+            "label": "7"
+          },
+          {
+            "id": "k9",
+            "label": "9"
+          }
+        ]
+      }
+    ]
+  }
+}

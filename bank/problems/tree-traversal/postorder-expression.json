@@ -1,0 +1,51 @@
+{
+  "type": "tree-traversal",
+  "title": "Post-order of an expression tree",
+  "prompt": "<p>This tree represents the arithmetic expression <code>(a + b) * (c − d / e)</code>. List its nodes in <strong>post-order</strong> (the result is the expression in postfix notation).</p>",
+  "traversal": "postorder",
+  "binary": true,
+  "tree": {
+    "id": "mul",
+    "label": "*",
+    "children": [
+      {
+        "id": "add",
+        "label": "+",
+        "children": [
+          {
+            "id": "a",
+            "label": "a"
+          },
+          {
+            "id": "b",
+            "label": "b"
+          }
+        ]
+      },
+      {
+        "id": "sub",
+        "label": "−",
+        "children": [
+          {
+            "id": "c",
+            "label": "c"
+          },
+          {
+            "id": "div",
+            "label": "/",
+            "children": [
+              {
+                "id": "d",
+                "label": "d"
+              },
+              {
+                "id": "e",
+                "label": "e"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

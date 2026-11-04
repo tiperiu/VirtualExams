@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problem editor</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23912338'/%3E%3Cpath d='M9 22l2-6 9-9 4 4-9 9z' stroke='white' stroke-width='2.5' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/exam.css">
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body class="editor">
+  <div id="app"></div>
+  <noscript>The editor needs JavaScript enabled.</noscript>
+
+  <!-- Question types: the same scripts as index.html (keep the two lists in sync). -->
+  <script src="js/util.js"></script>
+  <script src="js/types/common.js"></script>
+  <script src="js/types/mcq/view.js"></script>
+  <script src="js/types/mcq/grader.js"></script>
+  <script src="js/types/text/view.js"></script>
+  <script src="js/types/text/grader.js"></script>
+  <script src="js/types/tree-traversal/tree.js"></script>
+  <script src="js/types/tree-traversal/draw.js"></script>
+  <script src="js/types/tree-traversal/view.js"></script>
+  <script src="js/types/tree-traversal/grader.js"></script>
+  <script src="js/types/tree-array/array.js"></script>
+  <script src="js/types/tree-array/view.js"></script>
+  <script src="js/types/tree-array/grader.js"></script>
+  <script src="js/types/sorting/algorithms.js"></script>
+  <script src="js/types/sorting/ui.js"></script>
+  <script src="js/types/sort-count/view.js"></script>
+  <script src="js/types/sort-count/grader.js"></script>
+  <script src="js/types/sort-trace/view.js"></script>
+  <script src="js/types/sort-trace/grader.js"></script>
+
+  <!-- Editor: one form per question type, then the editor itself. -->
+  <script src="js/editor/bank.js"></script>
+  <script src="js/editor/tree-text.js"></script>
+  <script src="js/editor/form.js"></script>
+  <script src="js/editor/types/mcq.js"></script>
+  <script src="js/editor/types/text.js"></script>
+  <script src="js/editor/types/trees.js"></script>
+  <script src="js/editor/types/sorting.js"></script>
+  <script src="js/editor/app.js"></script>
+</body>
+</html>

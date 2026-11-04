@@ -1,0 +1,4 @@
+{
+  "scoring": "prefix",
+  "explanation": "Sorting in decreasing order, each pass selects the largest remaining value. In the last two passes (i = 3, 4) the value is already in place, so there is no swap."
+}

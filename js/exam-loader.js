@@ -40,7 +40,7 @@ async function loadExam(folderUrl, { modeOverride = null } = {}) {
     const solution = mode === 'practice' && q.solution && q.solution in bundle.files ? bundle.files[q.solution] : null;
     return {
       id: q.id || `q${i + 1}`, type, points: q.points ?? 1, problemFile: q.problem,
-      problem, solution, baseUrl: new URL(q.problem, folderUrl).href,
+      problem, solution, baseUrl: folderUrl,
     };
   });
 

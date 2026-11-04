@@ -1,0 +1,37 @@
+{
+  "type": "tree-traversal",
+  "title": "Pre-order traversal",
+  "prompt": "<p>List the nodes of this binary tree in <strong>pre-order</strong> (node, left subtree, right subtree).</p>",
+  "traversal": "preorder",
+  "binary": true,
+  "tree": {
+    "id": "A",
+    "children": [
+      {
+        "id": "B",
+        "children": [
+          {
+            "id": "D"
+          },
+          {
+            "id": "E"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "children": [
+          null,
+          {
+            "id": "F",
+            "children": [
+              {
+                "id": "G"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

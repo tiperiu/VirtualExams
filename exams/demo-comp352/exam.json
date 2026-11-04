@@ -10,7 +10,7 @@
   "mode": "practice",
   "date": "2026-11-10",
   "startTime": "10:15",
-  "durationMinutes": 30,
+  "durationMinutes": 75,
   "location": "Online",
   "studentIdPattern": "^\\d{8}$",
   "studentIdHint": "8-digit student ID",
@@ -21,9 +21,124 @@
     "Closed book. No calculators are needed."
   ],
   "questions": [
-    { "id": "q1", "type": "mcq",            "points": 2, "problem": "problems/q1-bst-successor.json", "solution": "solutions/q1-bst-successor.json" },
-    { "id": "q2", "type": "text",           "points": 3, "problem": "problems/q2-loop-complexity.json", "solution": "solutions/q2-loop-complexity.json" },
-    { "id": "q3", "type": "tree-traversal", "points": 2, "problem": "problems/q3-preorder.json", "solution": "solutions/q3-preorder.json" },
-    { "id": "q4", "type": "tree-traversal", "points": 3, "problem": "problems/q4-postorder.json", "solution": "solutions/q4-postorder.json" }
+    {
+      "id": "q1",
+      "type": "mcq",
+      "points": 2,
+      "problem": "problems/mcq/bst-successor.json",
+      "solution": "solutions/mcq/bst-successor.json"
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "points": 1,
+      "problem": "problems/mcq/complexity-easy.json",
+      "solution": "solutions/mcq/complexity-easy.json"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "points": 2,
+      "problem": "problems/mcq/complexity-medium.json",
+      "solution": "solutions/mcq/complexity-medium.json"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "points": 3,
+      "problem": "problems/mcq/complexity-hard.json",
+      "solution": "solutions/mcq/complexity-hard.json"
+    },
+    {
+      "id": "q5",
+      "type": "text",
+      "points": 3,
+      "problem": "problems/text/loop-complexity-text.json",
+      "solution": "solutions/text/loop-complexity-text.json"
+    },
+    {
+      "id": "q6",
+      "type": "tree-traversal",
+      "points": 2,
+      "problem": "problems/tree-traversal/preorder-binary.json",
+      "solution": "solutions/tree-traversal/preorder-binary.json"
+    },
+    {
+      "id": "q7",
+      "type": "tree-traversal",
+      "points": 3,
+      "problem": "problems/tree-traversal/postorder-bst.json",
+      "solution": "solutions/tree-traversal/postorder-bst.json"
+    },
+    {
+      "id": "q8",
+      "type": "tree-traversal",
+      "points": 2,
+      "problem": "problems/tree-traversal/inorder-binary.json",
+      "solution": "solutions/tree-traversal/inorder-binary.json"
+    },
+    {
+      "id": "q9",
+      "type": "tree-traversal",
+      "points": 2,
+      "problem": "problems/tree-traversal/preorder-general.json",
+      "solution": "solutions/tree-traversal/preorder-general.json"
+    },
+    {
+      "id": "q10",
+      "type": "tree-traversal",
+      "points": 2,
+      "problem": "problems/tree-traversal/postorder-expression.json",
+      "solution": "solutions/tree-traversal/postorder-expression.json"
+    },
+    {
+      "id": "q11",
+      "type": "tree-array",
+      "points": 3,
+      "problem": "problems/tree-array/tree-to-array.json",
+      "solution": "solutions/tree-array/tree-to-array.json"
+    },
+    {
+      "id": "q12",
+      "type": "tree-array",
+      "points": 3,
+      "problem": "problems/tree-array/heap-insert.json",
+      "solution": "solutions/tree-array/heap-insert.json"
+    },
+    {
+      "id": "q13",
+      "type": "tree-array",
+      "points": 3,
+      "problem": "problems/tree-array/heap-remove.json",
+      "solution": "solutions/tree-array/heap-remove.json"
+    },
+    {
+      "id": "q14",
+      "type": "sort-count",
+      "points": 2,
+      "problem": "problems/sort-count/sort-count-insertion.json",
+      "solution": "solutions/sort-count/sort-count-insertion.json"
+    },
+    {
+      "id": "q15",
+      "type": "sort-count",
+      "points": 2,
+      "problem": "problems/sort-count/sort-count-lomuto.json",
+      "solution": "solutions/sort-count/sort-count-lomuto.json"
+    },
+    {
+      "id": "q16",
+      "type": "sort-trace",
+      "points": 3,
+      "problem": "problems/sort-trace/sort-trace-selection.json",
+      "solution": "solutions/sort-trace/sort-trace-selection.json"
+    },
+    {
+      "id": "q17",
+      "type": "sort-trace",
+      "points": 4,
+      "problem": "problems/sort-trace/sort-trace-hoare.json",
+      "solution": "solutions/sort-trace/sort-trace-hoare.json"
+    }
   ]
 }

@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "4 starts at index 9 (child of 10), swaps with 10, then with 8, and stops below 3: [3, 4, 5, 12, 8, 7, 9, 15, 14, 10]."
+}

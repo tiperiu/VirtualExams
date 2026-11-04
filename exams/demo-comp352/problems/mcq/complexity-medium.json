@@ -1,0 +1,23 @@
+{
+  "type": "mcq",
+  "title": "Complexity (medium): a halving loop",
+  "prompt": "<p>What is the worst-case running time of this fragment, as a function of <code>n</code>?</p><pre><code>int count = 0;\nfor (int i = n; i &gt; 0; i /= 2)\n    for (int j = 0; j &lt; i; j++)\n        count++;</code></pre>",
+  "options": [
+    {
+      "id": "a",
+      "text": "O(log n)"
+    },
+    {
+      "id": "b",
+      "text": "O(n)"
+    },
+    {
+      "id": "c",
+      "text": "O(n log n)"
+    },
+    {
+      "id": "d",
+      "text": "O(n²)"
+    }
+  ]
+}

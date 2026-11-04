@@ -251,3 +251,108 @@ body.tt-dragging, body.tt-dragging * { cursor: grabbing !important; }
 .res-answers dd { margin: 0; font-family: var(--mono); font-size: 0.95rem; }
 .res-expl { margin: 10px 0 0 38px; padding: 8px 12px; background: #f7f7f5; border-radius: 6px; font-size: 0.93rem; }
 .done-page h2 { margin-top: 0; }
+
+/* code in question prompts */
+.prompt-text pre {
+  background: #f7f7f5; border: 1px solid var(--line); border-radius: 8px;
+  padding: 12px 16px; margin: 10px 0 14px; overflow-x: auto;
+  font-size: 0.92rem; line-height: 1.55; white-space: pre;
+}
+.prompt-text pre code { font-size: inherit; }
+
+/* tree → array */
+.ta-pool { display: flex; align-items: center; gap: 12px; margin: -4px 0 14px; padding: 8px 12px; border: 1px dashed #c9c9ce; border-radius: 8px; background: #fbfbfa; }
+.ta-pool-label { font-weight: 600; color: var(--muted); }
+.ta-pool .tt-node { position: static; transform: none; }
+.ta-array { display: flex; flex-wrap: wrap; row-gap: 10px; padding: 4px 2px 2px; }
+.ta-cell { display: flex; flex-direction: column; align-items: stretch; width: 54px; margin-right: -2px; }
+.ta-index { text-align: center; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 2px; }
+.ta-slot {
+  position: relative; height: 50px;
+  border: 2px solid #b9b9be; background: #fff;
+  display: grid; place-items: center;
+  transition: background 0.1s, border-color 0.1s;
+}
+.ta-cell:first-child .ta-slot { border-radius: 6px 0 0 6px; }
+.ta-cell:last-child .ta-slot { border-radius: 0 6px 6px 0; }
+.ta-x { color: #b5b5ba; font-weight: 700; font-size: 1.05rem; }
+.ta-slot.ta-hover { background: var(--accent-soft); border-color: var(--accent); z-index: 1; }
+.ta-slot.ta-source .ta-val { opacity: 0.3; }
+.ta-val {
+  position: absolute; inset: 3px; border-radius: 4px;
+  background: var(--accent); color: #fff; font-weight: 700;
+  display: grid; place-items: center;
+  cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+}
+.ta-val:focus-visible { outline: 3px solid rgba(145, 35, 56, 0.35); outline-offset: 2px; }
+.ta-remove {
+  position: absolute; top: -9px; right: -9px; width: 20px; height: 20px; padding: 0;
+  border-radius: 50%; border: 1px solid var(--accent); background: #fff; color: var(--accent);
+  font: inherit; font-size: 0.85rem; line-height: 1; cursor: pointer; display: none;
+}
+.ta-val:hover .ta-remove, .ta-val:focus-within .ta-remove { display: block; }
+@media (hover: none) { .ta-remove { display: block; } }
+
+/* sorting questions (sort-count, sort-trace) */
+.sort-layout { display: flex; flex-wrap: wrap; gap: 16px 22px; align-items: flex-start; margin-top: 6px; }
+.sort-work { flex: 1 1 360px; min-width: 0; }
+.sort-layout-trace .sort-work { flex-basis: 440px; }
+.sort-layout-trace .sort-code { flex-basis: 324px; }
+.sort-layout-trace .sort-code pre { font-size: 0.76rem; }
+.sort-code { flex: 0 1 340px; min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: #f7f7f5; overflow: hidden; }
+.sort-code-title {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--muted); padding: 7px 12px; border-bottom: 1px solid var(--line); background: #efefec;
+}
+.sort-code pre { margin: 0; padding: 10px 12px; font-size: 0.8rem; line-height: 1.5; overflow-x: auto; white-space: pre; }
+.sa-strip { display: flex; flex-wrap: wrap; gap: 4px; margin: 2px 0 18px; }
+.sa-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.sa-idx { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.sa-val {
+  min-width: 44px; height: 42px; padding: 0 6px; display: grid; place-items: center;
+  border: 2px solid #b9b9be; border-radius: 6px; background: #fff; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.sc-answer { display: flex; align-items: center; gap: 10px; }
+.sc-input {
+  width: 110px; font: inherit; font-size: 1.35rem; font-weight: 700; text-align: center;
+  padding: 8px 10px; border: 1px solid #b9b9be; border-radius: 8px; font-variant-numeric: tabular-nums;
+}
+.sc-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(145, 35, 56, 0.15); }
+.sc-unit { color: var(--muted); font-weight: 600; }
+.sort-work .q-hint { margin-top: 6px; }
+
+.st-wrap { overflow-x: auto; padding: 4px 2px 6px; }
+.st-grid { display: flex; flex-direction: column; gap: 6px; width: max-content; }
+.st-row { display: grid; grid-template-columns: 50px repeat(var(--n), minmax(34px, 44px)) 58px; gap: 3px; align-items: center; }
+.st-label { font-size: 0.82rem; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.st-idx { text-align: center; font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.st-cell {
+  height: 40px; padding: 0; display: grid; place-items: center;
+  border: 2px solid #c9c9ce; border-radius: 6px; background: #fff;
+  font: inherit; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums;
+  cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none;
+}
+button.st-cell:hover { border-color: var(--accent); }
+.st-cell.st-static { background: #ececee; border-color: #dcdcdf; cursor: default; }
+.st-row.st-empty .st-cell { border-style: dashed; }
+.st-cell.st-swapped { background: var(--accent); border-color: var(--accent); color: #fff; }
+.st-cell.st-sel { outline: 3px solid var(--accent); outline-offset: 2px; }
+.st-cell.st-hover { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+.st-cell:focus-visible { outline: 3px solid rgba(145, 35, 56, 0.45); outline-offset: 2px; }
+.st-actions { display: flex; gap: 4px; justify-content: flex-end; }
+.st-act {
+  width: 26px; height: 26px; padding: 0; border-radius: 50%;
+  border: 1px solid var(--line); background: #fff; color: var(--muted);
+  font: inherit; font-size: 0.95rem; line-height: 1; cursor: pointer;
+}
+.st-act:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); }
+.st-act:disabled { opacity: 0.3; cursor: default; }
+.st-add { margin-top: 8px; }
+.st-add:disabled { opacity: 0.45; }
+@media (max-width: 600px) {
+  .st-row { grid-template-columns: 34px repeat(var(--n), minmax(30px, 1fr)) 52px; gap: 3px; }
+  .st-long { display: none; }
+  .st-label { font-size: 0.72rem; }
+  .st-act { width: 24px; height: 24px; }
+  .sort-code pre { font-size: 0.74rem; }
+}

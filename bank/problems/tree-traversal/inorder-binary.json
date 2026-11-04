@@ -1,0 +1,43 @@
+{
+  "type": "tree-traversal",
+  "title": "In-order traversal",
+  "prompt": "<p>List the nodes of this binary tree in <strong>in-order</strong> (left subtree, node, right subtree). Careful: this is not a search tree, and some nodes have only a right child.</p>",
+  "traversal": "inorder",
+  "binary": true,
+  "tree": {
+    "id": "R",
+    "children": [
+      {
+        "id": "E",
+        "children": [
+          {
+            "id": "X"
+          },
+          {
+            "id": "N",
+            "children": [
+              null,
+              {
+                "id": "B"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "T",
+        "children": [
+          null,
+          {
+            "id": "C",
+            "children": [
+              {
+                "id": "J"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

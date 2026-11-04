@@ -1,0 +1,6 @@
+{
+  "correct": [
+    "c"
+  ],
+  "explanation": "The inner loop runs n − i times, so the total is n + (n − 1) + … + 1 = n(n + 1)/2, which is O(n²)."
+}

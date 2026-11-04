@@ -1,0 +1,15 @@
+{
+  "type": "sort-count",
+  "title": "Counting swaps: insertion sort",
+  "data": [
+    5,
+    2,
+    9,
+    1,
+    6,
+    3
+  ],
+  "algorithm": "insertion",
+  "order": "increasing",
+  "count": "swaps"
+}

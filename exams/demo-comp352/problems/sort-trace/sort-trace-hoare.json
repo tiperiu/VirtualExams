@@ -1,0 +1,16 @@
+{
+  "type": "sort-trace",
+  "title": "Tracing swaps: quicksort, Hoare partition",
+  "data": [
+    6,
+    3,
+    9,
+    1,
+    7,
+    2,
+    8
+  ],
+  "algorithm": "quicksort-hoare",
+  "order": "increasing",
+  "rows": 1
+}

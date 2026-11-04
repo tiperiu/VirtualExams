@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+# student submissions and grading output stay out of the repository
+submissions/
+*.graded.json
+__pycache__/

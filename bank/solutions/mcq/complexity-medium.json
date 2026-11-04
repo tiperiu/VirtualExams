@@ -1,0 +1,6 @@
+{
+  "correct": [
+    "b"
+  ],
+  "explanation": "The outer loop runs about log n times, but the inner loop does i steps where i halves each time: n + n/2 + n/4 + … &lt; 2n, so O(n) — not O(n log n)."
+}

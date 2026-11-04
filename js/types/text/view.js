@@ -9,7 +9,7 @@ function isAnswered(response) {
   return !!(response && typeof response.text === 'string' && response.text.trim());
 }
 
-function render({ container, problem, response, onChange, baseUrl, questionId }) {
+function render({ container, problem, response, onChange, baseUrl, questionId, autofocus = true }) {
   container.append(renderPrompt(problem, baseUrl));
   const id = `text-${questionId}`;
   const attrs = {
@@ -26,7 +26,7 @@ function render({ container, problem, response, onChange, baseUrl, questionId })
   field.value = response?.text ?? '';
   field.addEventListener('input', () => onChange({ text: field.value }));
   container.append(h('label', { class: 'field-label', for: id }, problem.answerLabel || 'Your answer'), field);
-  setTimeout(() => field.focus({ preventScroll: true }), 0);
+  if (autofocus) setTimeout(() => field.focus({ preventScroll: true }), 0);
 }
 
 VE.views = VE.views || {};

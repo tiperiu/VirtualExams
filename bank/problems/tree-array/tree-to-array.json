@@ -1,0 +1,37 @@
+{
+  "type": "tree-array",
+  "task": "layout",
+  "title": "Binary tree stored in an array",
+  "prompt": "<p>Store this binary tree in an array the way a heap is stored: the root goes at index 0, and the children of the node at index <code>i</code> go at <code>2i + 1</code> (left) and <code>2i + 2</code> (right). Positions with no node stay <strong>X</strong>.</p>",
+  "slots": 15,
+  "tree": {
+    "id": "A",
+    "children": [
+      {
+        "id": "B",
+        "children": [
+          null,
+          {
+            "id": "D",
+            "children": [
+              {
+                "id": "G"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "children": [
+          {
+            "id": "E"
+          },
+          {
+            "id": "F"
+          }
+        ]
+      }
+    ]
+  }
+}

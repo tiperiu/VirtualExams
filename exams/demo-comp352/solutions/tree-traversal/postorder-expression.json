@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "a b + c d e / − * — each operator comes after both of its operands."
+}

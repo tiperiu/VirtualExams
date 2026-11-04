@@ -1,0 +1,3 @@
+{
+  "explanation": "Careful with the guards: when i = j, or when the pivot is already in place, the pseudocode does not swap."
+}

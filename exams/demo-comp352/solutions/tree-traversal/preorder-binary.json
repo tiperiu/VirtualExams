@@ -1,0 +1,13 @@
+{
+  "sequence": [
+    "A",
+    "B",
+    "D",
+    "E",
+    "C",
+    "F",
+    "G"
+  ],
+  "scoring": "exact",
+  "explanation": "Visit the node first, then its left subtree, then its right subtree."
+}

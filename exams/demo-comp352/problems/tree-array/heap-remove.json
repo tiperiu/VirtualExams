@@ -1,0 +1,52 @@
+{
+  "type": "tree-array",
+  "task": "heap-remove",
+  "heap": "max",
+  "title": "Max-heap: array after a removal",
+  "prompt": "<p>The tree below is a <strong>max-heap</strong>. Remove the maximum (the last element moves to the root, then moves down). Show the array that stores the heap afterwards, with the root at index 0. The removed key is no longer in the array.</p>",
+  "slots": 10,
+  "tree": {
+    "id": "k50",
+    "label": "50",
+    "children": [
+      {
+        "id": "k30",
+        "label": "30",
+        "children": [
+          {
+            "id": "k20",
+            "label": "20",
+            "children": [
+              {
+                "id": "k5",
+                "label": "5"
+              },
+              {
+                "id": "k15",
+                "label": "15"
+              }
+            ]
+          },
+          {
+            "id": "k25",
+            "label": "25"
+          }
+        ]
+      },
+      {
+        "id": "k45",
+        "label": "45",
+        "children": [
+          {
+            "id": "k40",
+            "label": "40"
+          },
+          {
+            "id": "k10",
+            "label": "10"
+          }
+        ]
+      }
+    ]
+  }
+}

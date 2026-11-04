@@ -1,0 +1,16 @@
+{
+  "type": "sort-count",
+  "title": "Counting swaps: quicksort, Lomuto partition",
+  "data": [
+    4,
+    7,
+    2,
+    9,
+    5,
+    3,
+    8
+  ],
+  "algorithm": "quicksort-lomuto",
+  "order": "decreasing",
+  "count": "swaps"
+}

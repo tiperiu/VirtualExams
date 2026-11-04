@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "15 (the last element) replaces 50 at the root, swaps with the larger child 45, then with 40: [45, 30, 40, 20, 25, 15, 10, 5]."
+}

@@ -1,0 +1,40 @@
+{
+  "type": "tree-traversal",
+  "title": "Pre-order traversal of a general tree",
+  "prompt": "<p>This tree is <strong>not binary</strong>. List its nodes in <strong>pre-order</strong>: a node first, then each of its subtrees from left to right.</p>",
+  "traversal": "preorder",
+  "binary": false,
+  "tree": {
+    "id": "A",
+    "children": [
+      {
+        "id": "B",
+        "children": [
+          {
+            "id": "E"
+          },
+          {
+            "id": "F"
+          }
+        ]
+      },
+      {
+        "id": "C"
+      },
+      {
+        "id": "D",
+        "children": [
+          {
+            "id": "G"
+          },
+          {
+            "id": "H"
+          },
+          {
+            "id": "I"
+          }
+        ]
+      }
+    ]
+  }
+}

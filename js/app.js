@@ -1,8 +1,10 @@
 // Exam shell: welcome (student ID) -> one question per page -> review -> submit -> result.
 // Works when index.html is opened straight from disk (file://); no web server needed.
 //
+// Which exam: the folder in <body data-exam="..."> (a built exam folder has data-exam="."; the
+// development copy at the top of the repository points to exams/demo-comp352).
 // URL parameters (optional):
-//   ?exam=exams/demo-comp352     which exam folder to load (this is the default)
+//   ?exam=<folder>               load another exam folder
 //   &mode=practice|exam          overrides the "mode" in exam.json
 (function (VE) {
 'use strict';
@@ -11,7 +13,7 @@ const views = VE.views;
 const { gradeSubmission, loadExam } = VE;
 
 const params = new URLSearchParams(location.search);
-const examFolder = (params.get('exam') || 'exams/demo-comp352').replace(/\/(exam\.json)?$/, '') + '/';
+const examFolder = (params.get('exam') || document.body.dataset.exam || '.').replace(/\/(exam\.json)?$/, '') + '/';
 const app = document.getElementById('app');
 const store = safeStorage();
 

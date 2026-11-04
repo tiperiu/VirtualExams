@@ -1,0 +1,15 @@
+{
+  "type": "sort-trace",
+  "title": "Tracing swaps: selection sort",
+  "data": [
+    5,
+    1,
+    8,
+    3,
+    9,
+    2
+  ],
+  "algorithm": "selection",
+  "order": "decreasing",
+  "rows": 1
+}

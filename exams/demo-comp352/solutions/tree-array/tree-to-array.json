@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "[A, B, C, X, D, E, F, X, X, G, X, X, X, X, X] — B has no left child, so index 3 is X; D is the right child of B (index 2·1 + 2 = 4) and G is the left child of D (index 2·4 + 1 = 9)."
+}

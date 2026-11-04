@@ -1,0 +1,14 @@
+{
+  "accepted": [
+    "O(n log n)",
+    "O(log n * n)",
+    "Θ(n log n)"
+  ],
+  "patterns": [
+    "^[oθ]\\(n\\*?(log|lg)(_?2)?\\(?n\\)?\\)$",
+    "^[oθ]\\((log|lg)(_?2)?\\(?n\\)?\\*?n\\)$"
+  ],
+  "caseSensitive": false,
+  "ignoreWhitespace": true,
+  "explanation": "The outer loop doubles <code>i</code>, so it runs about log<sub>2</sub> n times; the inner loop runs n times for each of them: O(n log n)."
+}

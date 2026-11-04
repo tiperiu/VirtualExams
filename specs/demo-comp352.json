@@ -1,0 +1,99 @@
+{
+  "folders": {
+    "problems": "../bank/problems",
+    "solutions": "../bank/solutions",
+    "assets": "../bank/assets"
+  },
+  "out": "../exams/demo-comp352",
+  "examId": "COMP352-F26-DEMO",
+  "course": {
+    "code": "COMP 352",
+    "title": "Data Structures and Algorithms",
+    "term": "Fall 2026"
+  },
+  "title": "Demo Quiz",
+  "examType": "Quiz",
+  "mode": "practice",
+  "date": "2026-11-10",
+  "startTime": "10:15",
+  "durationMinutes": 75,
+  "location": "Online",
+  "studentIdPattern": "^\\d{8}$",
+  "studentIdHint": "8-digit student ID",
+  "studentIdError": "Your student ID should have 8 digits.",
+  "instructions": [
+    "Answer all questions. You can move back and forth between questions until you submit.",
+    "Your answers are kept in this browser if the page is reloaded.",
+    "Closed book. No calculators are needed."
+  ],
+  "questions": [
+    {
+      "problem": "mcq/bst-successor.json",
+      "points": 2
+    },
+    {
+      "problem": "mcq/complexity-easy.json",
+      "points": 1
+    },
+    {
+      "problem": "mcq/complexity-medium.json",
+      "points": 2
+    },
+    {
+      "problem": "mcq/complexity-hard.json",
+      "points": 3
+    },
+    {
+      "problem": "text/loop-complexity-text.json",
+      "points": 3
+    },
+    {
+      "problem": "tree-traversal/preorder-binary.json",
+      "points": 2
+    },
+    {
+      "problem": "tree-traversal/postorder-bst.json",
+      "points": 3
+    },
+    {
+      "problem": "tree-traversal/inorder-binary.json",
+      "points": 2
+    },
+    {
+      "problem": "tree-traversal/preorder-general.json",
+      "points": 2
+    },
+    {
+      "problem": "tree-traversal/postorder-expression.json",
+      "points": 2
+    },
+    {
+      "problem": "tree-array/tree-to-array.json",
+      "points": 3
+    },
+    {
+      "problem": "tree-array/heap-insert.json",
+      "points": 3
+    },
+    {
+      "problem": "tree-array/heap-remove.json",
+      "points": 3
+    },
+    {
+      "problem": "sort-count/sort-count-insertion.json",
+      "points": 2
+    },
+    {
+      "problem": "sort-count/sort-count-lomuto.json",
+      "points": 2
+    },
+    {
+      "problem": "sort-trace/sort-trace-selection.json",
+      "points": 3
+    },
+    {
+      "problem": "sort-trace/sort-trace-hoare.json",
+      "points": 4
+    }
+  ]
+}

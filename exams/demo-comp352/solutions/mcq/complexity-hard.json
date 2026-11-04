@@ -1,0 +1,6 @@
+{
+  "correct": [
+    "b"
+  ],
+  "explanation": "T(n) = 2T(n/2) + Θ(n). Each of the log n levels of the recursion does n work in total, so T(n) = Θ(n log n) (master theorem, case 2)."
+}

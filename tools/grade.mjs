@@ -27,6 +27,8 @@ const GRADER_SCRIPTS = [
   'js/types/hash-table/grader.js',
   'js/types/radix-sort/radix.js',
   'js/types/radix-sort/grader.js',
+  'js/types/bst-update/bst.js',
+  'js/types/bst-update/grader.js',
   'js/grading/grade-exam.js',
 ];
 const sandbox = vm.createContext({});

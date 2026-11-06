@@ -399,3 +399,37 @@ button.st-cell:hover { border-color: var(--accent); }
 /* small h(k) / h'(k) under the hash-table keys */
 .af-pool:has(.af-cap) { gap: 8px 14px; }
 .af-cap { display: flex; flex-direction: column; align-items: center; font-size: 0.74rem; font-variant-numeric: tabular-nums; line-height: 1.15; color: var(--muted); white-space: nowrap; }
+
+/* search-tree update (bst-update) */
+.bu-start .tt-tree { margin: 0 0 14px; }
+.bu-start .tt-node { pointer-events: none; cursor: default; width: 40px; height: 40px; }
+.te-tree { margin: 4px 0 0; }
+.te-node { width: 40px; height: 40px; }
+.te-node.te-orphan { border-style: dashed; border-color: #c0392b; color: #c0392b; }
+.te-spot {
+  position: absolute; transform: translate(-50%, -50%);
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2px dashed #c4c4c9; background: #fff;
+}
+.te-spot.te-hover, .te-node.te-hover { border-color: var(--accent); border-style: solid; background: var(--accent-soft); }
+.te-edge-free { stroke: #d4d4d8 !important; stroke-dasharray: 4 4; }
+.te-mode { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; font-size: 0.9rem; color: var(--muted); margin: 0 0 8px; }
+.te-mode label { color: var(--ink); cursor: pointer; }
+.te-msg { min-height: 1.2em; margin: 6px 0 0; color: #b03a2e; font-size: 0.9rem; }
+.te-pool .tt-node { cursor: grab; }
+@media (max-width: 600px) {
+  .te-node, .bu-start .tt-node { width: 34px; height: 34px; font-size: 0.9rem; }
+  .te-spot { width: 26px; height: 26px; }
+}
+/* external nodes (empty leaves of a proper binary tree) */
+.te-ext {
+  position: absolute; transform: translate(-50%, -50%);
+  width: 16px; height: 16px; border-radius: 2px;
+  border: 2px solid #8d8d93; background: #fff;
+}
+.te-ext.te-hover { border-color: var(--accent); background: var(--accent-soft); transform: translate(-50%, -50%) scale(1.5); }
+.te-edge-ext { stroke: #b4b4ba !important; }
+.te-static .te-node { pointer-events: none; cursor: default; }
+.bu-start .tt-tree { margin: 0 0 14px; }
+.te-ext::before { content: ''; position: absolute; inset: -14px; }   /* a bigger drop target */
+.te-static .te-node { display: flex; align-items: center; justify-content: center; box-sizing: border-box; }

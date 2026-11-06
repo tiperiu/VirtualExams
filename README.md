@@ -36,7 +36,7 @@ bank/
 ```
 
 There is one subfolder per question type (`mcq`, `text`, `tree-traversal`, `tree-array`,
-`sort-count`, `sort-trace`, `heap-build`, `hash-table`, `radix-sort`). The solution is a separate file so that it never has to reach the
+`sort-count`, `sort-trace`, `heap-build`, `hash-table`, `radix-sort`, `bst-update`). The solution is a separate file so that it never has to reach the
 students; it is found by the naming convention. Problems refer to assets by
 `"assets/<file>"` (the image field, or `<img src="assets/…">` inside a prompt); the same path
 works in the bank and in every exam built from it. Any folder with this layout is a bank, so
@@ -153,6 +153,7 @@ The built `exam.json` has the same settings, with each question pointing to its 
 | `heap-build` | `data: [numbers]`, `method` (`insert` or `bottom-up`), `heap` (`min`/`max`), `slots` | `{"slots": ["k3", "k0", null]}` (ids of the given keys) | — (computed), `"scoring": "exact"` or `"positional"` |
 | `hash-table` | `keys: [whole numbers]`, `size` (m), `probing` (`linear`, `quadratic`, `double`), `q` (double hashing) | `{"slots": ["k2", null, ...], "collisions": 6}` | — (computed), `"scoring": "partial"` or `"exact"`, `"countWeight"` (default 0.25) |
 | `radix-sort` | `data: [whole numbers]`, `base` (`decimal`/`binary`), `passes` (default 4) | `{"stages": [["k6", "k0", ...], ...]}` (one row per pass) | — (computed), `"scoring": "passes"`, `"positional"` or `"exact"` |
+| `bst-update` | `treeType` (`bst`/`avl`), `keys` (the starting tree, in insertion order), `operations: [{"insert": 35}, {"delete": 30}]`, `replaceWith` (`successor`/`predecessor`), `externalNodes` (default `true`) | `{"positions": {"": 50, "L": 30, "LR": 40}}` (path from the root → key) | — (computed), `"scoring": "positional"` or `"exact"` |
 
 All solution files may also have an `explanation` shown in practice mode.
 
@@ -206,6 +207,18 @@ order of the row above, with that pass's digit highlighted, and the student clic
 into their order after the pass. A pass is checked against the correct pass applied to the
 student's own previous row, so one mistake is not counted again in every later pass. The feedback
 lists the buckets of every pass.
+
+`bst-update`: the tree after one or more insertions/deletions, in a binary search tree or an AVL
+tree (rebalanced with single and double rotations). The starting tree is built by inserting
+`keys` in order, so it is always a valid BST/AVL tree. The student sees the starting tree and
+builds the new one by dragging, starting from a copy: keys from the pool onto the dashed free
+spots, nodes to other spots (by default with their whole subtree, or only the node), onto another
+node to swap them, or out of the tree. A deleted key with two children is replaced by its in-order
+successor (default) or predecessor; the prompt says which. With `"externalNodes": true` (the default) the trees
+are drawn as proper binary trees, as in the textbook: keys only in the internal nodes, and the
+external nodes as small empty squares; inserting means dropping a key on an external node. Partial credit is given for the keys in
+the right place, and the feedback says when the student's tree is not a search tree or not
+balanced, and lists every step and rotation.
 
 Prompts and explanations are HTML, so code can go in `<pre><code>…</code></pre>` (escape `<` as
 `&lt;`).

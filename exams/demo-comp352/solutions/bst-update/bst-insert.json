@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "Search for 42 from the root: the search ends at the left external node of 45, which becomes an internal node storing 42. No other node moves."
+}

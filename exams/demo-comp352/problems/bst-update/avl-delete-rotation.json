@@ -1,0 +1,22 @@
+{
+  "type": "bst-update",
+  "title": "AVL tree: delete a key",
+  "treeType": "avl",
+  "keys": [
+    40,
+    20,
+    60,
+    10,
+    50,
+    70,
+    45,
+    55,
+    80
+  ],
+  "operations": [
+    {
+      "delete": 10
+    }
+  ],
+  "externalNodes": true
+}

@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace", "heap-build", "hash-table", "radix-sort"}
+KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace", "heap-build", "hash-table", "radix-sort", "bst-update"}
 SORT_ALGORITHMS = {"selection", "insertion", "quicksort-hoare", "quicksort-lomuto"}
 
 
@@ -87,6 +87,41 @@ def check_radix_sort(problem: dict) -> list:
     return errs
 
 
+def check_bst_update(problem: dict) -> list:
+    """Problems that would make a bst-update question fail to load (the depth limit is checked
+    when the question is shown)."""
+    errs = []
+    keys = problem.get("keys")
+    if not isinstance(keys, list) or not keys or not all(isinstance(k, int) and not isinstance(k, bool) for k in keys):
+        return ['"keys" must be a list of whole numbers']
+    if len(set(keys)) != len(keys):
+        errs.append("the keys must all be different")
+    if problem.get("treeType", "bst") not in ("bst", "avl"):
+        errs.append('"treeType" must be "bst" or "avl"')
+    if not isinstance(problem.get("externalNodes", True), bool):
+        errs.append('"externalNodes" must be true or false')
+    if problem.get("replaceWith", "successor") not in ("successor", "predecessor"):
+        errs.append('"replaceWith" must be "successor" or "predecessor"')
+    ops = problem.get("operations")
+    if not isinstance(ops, list) or not ops:
+        return errs + ['"operations" must list at least one {"insert": k} or {"delete": k}']
+    present = set(keys)
+    for i, op in enumerate(ops, 1):
+        kind = next((k for k in ("insert", "delete") if isinstance(op, dict) and k in op), None)
+        key = op.get(kind) if kind else None
+        if kind is None or not isinstance(key, int) or isinstance(key, bool):
+            errs.append(f'operation {i} must look like {{"insert": 25}} or {{"delete": 30}}')
+        elif kind == "insert":
+            if key in present:
+                errs.append(f"operation {i}: {key} is already in the tree")
+            present.add(key)
+        else:
+            if key not in present:
+                errs.append(f"operation {i}: {key} is not in the tree")
+            present.discard(key)
+    return errs
+
+
 def check_sorting(problem: dict) -> list:
     """Problems that would make a sorting question fail to load."""
     errs = []
@@ -134,7 +169,8 @@ def pack(folder: Path, with_solutions: bool) -> None:
         if q.get("type") and problem.get("type") and q["type"] != problem["type"]:
             warnings.append(f"{qid}: exam.json says {q['type']!r}, {q['problem']} says {problem['type']!r}")
         checks = {"sort-count": check_sorting, "sort-trace": check_sorting, "heap-build": check_heap_build,
-                  "hash-table": check_hash_table, "radix-sort": check_radix_sort}
+                  "hash-table": check_hash_table, "radix-sort": check_radix_sort,
+                  "bst-update": check_bst_update}
         if qtype in checks:
             for e in checks[qtype](problem):
                 if e.startswith("warning: "):

@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "Both children of 30 are internal, so its place is taken by the smallest key of its right subtree, 35. The left child of 35 is an external node, so its right subtree (38) moves up into the place of 35."
+}

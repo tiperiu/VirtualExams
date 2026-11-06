@@ -1,0 +1,24 @@
+{
+  "type": "bst-update",
+  "title": "Binary search tree: delete a key",
+  "treeType": "bst",
+  "keys": [
+    50,
+    30,
+    70,
+    20,
+    40,
+    60,
+    80,
+    35,
+    45,
+    38
+  ],
+  "operations": [
+    {
+      "delete": 30
+    }
+  ],
+  "replaceWith": "successor",
+  "externalNodes": true
+}

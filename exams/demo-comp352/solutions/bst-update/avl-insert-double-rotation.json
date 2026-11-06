@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "35 is stored in the external node reached by the search, which becomes internal. On the way up, the first unbalanced node is 25. The new key is in the left subtree of its right child (40), so a double rotation (right-left) is needed: 30 becomes the root of that subtree, with 25 on its left and 40 on its right."
+}

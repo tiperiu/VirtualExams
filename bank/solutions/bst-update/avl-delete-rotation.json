@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "Removing 10 makes the root 40 unbalanced: its left subtree has height 1 and its right subtree height 3. Its taller child is 60, and both subtrees of 60 have the same height, so a single (left) rotation is used: 60 becomes the root, 40 its left child, and the subtree of 50 moves over to become the right subtree of 40."
+}

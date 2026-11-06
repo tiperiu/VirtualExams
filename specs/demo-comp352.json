@@ -16,7 +16,7 @@
   "mode": "practice",
   "date": "2026-11-10",
   "startTime": "10:15",
-  "durationMinutes": 105,
+  "durationMinutes": 125,
   "location": "Online",
   "studentIdPattern": "^\\d{8}$",
   "studentIdHint": "8-digit student ID",
@@ -125,6 +125,22 @@
     },
     {
       "problem": "radix-sort/radix-binary.json",
+      "points": 4
+    },
+    {
+      "problem": "bst-update/bst-insert.json",
+      "points": 4
+    },
+    {
+      "problem": "bst-update/bst-delete-two-children.json",
+      "points": 4
+    },
+    {
+      "problem": "bst-update/avl-insert-double-rotation.json",
+      "points": 4
+    },
+    {
+      "problem": "bst-update/avl-delete-rotation.json",
       "points": 4
     }
   ]

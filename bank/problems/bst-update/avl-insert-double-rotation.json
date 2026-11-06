@@ -1,0 +1,22 @@
+{
+  "type": "bst-update",
+  "title": "AVL tree: insert a key",
+  "treeType": "avl",
+  "keys": [
+    50,
+    25,
+    75,
+    10,
+    40,
+    60,
+    90,
+    30,
+    45
+  ],
+  "operations": [
+    {
+      "insert": 35
+    }
+  ],
+  "externalNodes": true
+}

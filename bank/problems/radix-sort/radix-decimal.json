@@ -1,0 +1,16 @@
+{
+  "type": "radix-sort",
+  "title": "Radix sort, decimal",
+  "data": [
+    3512,
+    207,
+    4096,
+    1834,
+    925,
+    58,
+    2741,
+    619
+  ],
+  "base": "decimal",
+  "passes": 4
+}

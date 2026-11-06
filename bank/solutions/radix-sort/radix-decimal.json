@@ -1,0 +1,4 @@
+{
+  "scoring": "passes",
+  "explanation": "Numbers with fewer digits have leading zeros: 58 is 0058, so it goes to bucket 0 in passes 3 and 4."
+}

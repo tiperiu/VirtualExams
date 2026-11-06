@@ -356,3 +356,46 @@ button.st-cell:hover { border-color: var(--accent); }
   .st-act { width: 24px; height: 24px; }
   .sort-code pre { font-size: 0.74rem; }
 }
+
+/* shared "fill an array" component (array-fill.js) */
+.af-pool { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 6px; padding: 10px 12px; border: 1px dashed #c9c9ce; border-radius: 8px; background: #fbfbfa; }
+.af-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.af-idx { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+.af-pool .tt-node { position: static; transform: none; width: auto; min-width: 44px; padding: 0 8px; border-radius: 22px; }
+.af-wide .ta-cell { width: 64px; }
+.af + .af { margin-top: 18px; }
+
+/* heap-build */
+.hb-tree-label { margin-top: 14px; }
+.hb-tree .tt-tree { margin: 0; }
+.hb-tree .tt-node { pointer-events: none; cursor: default; }
+.hb-tree-empty { color: var(--muted); font-size: 0.9rem; margin: 0; padding: 14px; border: 1px dashed #c9c9ce; border-radius: 8px; text-align: center; }
+.hb-steps { font-family: var(--mono); font-size: 0.85rem; }
+.hb-work { margin-top: 6px; }
+
+/* hash-table */
+.ht-info { border: 1px solid var(--line); border-radius: 8px; background: #f7f7f5; overflow: hidden; margin: 4px 0 14px; }
+.ht-info-body { padding: 10px 14px 4px; font-size: 0.93rem; }
+.ht-info-body p { margin: 0 0 8px; }
+.ht-formula { font-family: var(--mono); font-size: 1.15rem; font-weight: 700; color: var(--accent); margin: 2px 0 8px; }
+.ht-count-label { margin-top: 16px; }
+
+/* radix-sort */
+.rx-rows { display: flex; flex-direction: column; gap: 18px; margin-top: 6px; }
+.rx-pass { border-top: 1px solid var(--line); padding-top: 12px; }
+.rx-pass:first-child { border-top: 0; padding-top: 0; }
+.rx-pass-title { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.rx-pass-title span { font-weight: 500; color: var(--muted); }
+.rx-num { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.rx-lead { opacity: 0.35; }
+.rx-hl { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; font-weight: 800; opacity: 1 !important; }
+.af-pool .rx-hl { color: var(--accent); }
+.ta-val .rx-hl { color: #ffe08a; }
+.rx-bin { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.1; }
+.rx-dec { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; font-weight: 700; font-size: 0.95rem; }
+.rx-bits { font-size: 0.7rem; letter-spacing: 0.05em; }
+.af-wide.af-pool .tt-node { height: 46px; }
+.res-answers dd { white-space: pre-line; }
+/* small h(k) / h'(k) under the hash-table keys */
+.af-pool:has(.af-cap) { gap: 8px 14px; }
+.af-cap { display: flex; flex-direction: column; align-items: center; font-size: 0.74rem; font-variant-numeric: tabular-nums; line-height: 1.15; color: var(--muted); white-space: nowrap; }

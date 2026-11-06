@@ -21,6 +21,12 @@ const GRADER_SCRIPTS = [
   'js/types/sorting/algorithms.js',
   'js/types/sort-count/grader.js',
   'js/types/sort-trace/grader.js',
+  'js/types/heap-build/heap.js',
+  'js/types/heap-build/grader.js',
+  'js/types/hash-table/hash.js',
+  'js/types/hash-table/grader.js',
+  'js/types/radix-sort/radix.js',
+  'js/types/radix-sort/grader.js',
   'js/grading/grade-exam.js',
 ];
 const sandbox = vm.createContext({});

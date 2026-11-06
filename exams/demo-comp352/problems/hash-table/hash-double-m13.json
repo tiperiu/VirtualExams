@@ -1,0 +1,17 @@
+{
+  "type": "hash-table",
+  "title": "Hash table of size 13, double hashing",
+  "keys": [
+    44,
+    12,
+    58,
+    31,
+    70,
+    25,
+    9,
+    83
+  ],
+  "size": 13,
+  "probing": "double",
+  "q": 11
+}

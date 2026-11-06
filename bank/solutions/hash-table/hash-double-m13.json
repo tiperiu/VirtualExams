@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "Here h′(k) = 11 − (k mod 11) is the step: e.g. 70 has h = 5 and h′ = 7, so it tries 5, 12, 6 (= 19 mod 13) and 0 (= 26 mod 13)."
+}

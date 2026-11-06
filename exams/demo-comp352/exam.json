@@ -10,7 +10,7 @@
   "mode": "practice",
   "date": "2026-11-10",
   "startTime": "10:15",
-  "durationMinutes": 75,
+  "durationMinutes": 105,
   "location": "Online",
   "studentIdPattern": "^\\d{8}$",
   "studentIdHint": "8-digit student ID",
@@ -139,6 +139,62 @@
       "points": 4,
       "problem": "problems/sort-trace/sort-trace-hoare.json",
       "solution": "solutions/sort-trace/sort-trace-hoare.json"
+    },
+    {
+      "id": "q18",
+      "type": "heap-build",
+      "points": 3,
+      "problem": "problems/heap-build/heap-insert-min.json",
+      "solution": "solutions/heap-build/heap-insert-min.json"
+    },
+    {
+      "id": "q19",
+      "type": "heap-build",
+      "points": 3,
+      "problem": "problems/heap-build/heap-insert-max.json",
+      "solution": "solutions/heap-build/heap-insert-max.json"
+    },
+    {
+      "id": "q20",
+      "type": "heap-build",
+      "points": 3,
+      "problem": "problems/heap-build/heap-bottom-up-min.json",
+      "solution": "solutions/heap-build/heap-bottom-up-min.json"
+    },
+    {
+      "id": "q21",
+      "type": "heap-build",
+      "points": 3,
+      "problem": "problems/heap-build/heap-bottom-up-max.json",
+      "solution": "solutions/heap-build/heap-bottom-up-max.json"
+    },
+    {
+      "id": "q22",
+      "type": "hash-table",
+      "points": 4,
+      "problem": "problems/hash-table/hash-linear-m11.json",
+      "solution": "solutions/hash-table/hash-linear-m11.json"
+    },
+    {
+      "id": "q23",
+      "type": "hash-table",
+      "points": 4,
+      "problem": "problems/hash-table/hash-double-m13.json",
+      "solution": "solutions/hash-table/hash-double-m13.json"
+    },
+    {
+      "id": "q24",
+      "type": "radix-sort",
+      "points": 4,
+      "problem": "problems/radix-sort/radix-decimal.json",
+      "solution": "solutions/radix-sort/radix-decimal.json"
+    },
+    {
+      "id": "q25",
+      "type": "radix-sort",
+      "points": 4,
+      "problem": "problems/radix-sort/radix-binary.json",
+      "solution": "solutions/radix-sort/radix-binary.json"
     }
   ]
 }

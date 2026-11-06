@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "The root 2 moves down two levels: first below 13, then below 9."
+}

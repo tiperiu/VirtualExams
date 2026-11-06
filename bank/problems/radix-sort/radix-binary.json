@@ -1,0 +1,16 @@
+{
+  "type": "radix-sort",
+  "title": "Radix sort, binary",
+  "data": [
+    13,
+    6,
+    22,
+    9,
+    3,
+    17,
+    10,
+    28
+  ],
+  "base": "binary",
+  "passes": 4
+}

@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "With 8 keys the last node that has a child is at index 3; sift down indices 3, 2, 1, 0 in that order."
+}

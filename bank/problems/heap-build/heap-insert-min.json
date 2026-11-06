@@ -1,0 +1,15 @@
+{
+  "type": "heap-build",
+  "title": "Building a min-heap by insertions",
+  "data": [
+    15,
+    8,
+    12,
+    3,
+    9,
+    5,
+    1
+  ],
+  "method": "insert",
+  "heap": "min"
+}

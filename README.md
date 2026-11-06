@@ -36,7 +36,7 @@ bank/
 ```
 
 There is one subfolder per question type (`mcq`, `text`, `tree-traversal`, `tree-array`,
-`sort-count`, `sort-trace`). The solution is a separate file so that it never has to reach the
+`sort-count`, `sort-trace`, `heap-build`, `hash-table`, `radix-sort`). The solution is a separate file so that it never has to reach the
 students; it is found by the naming convention. Problems refer to assets by
 `"assets/<file>"` (the image field, or `<img src="assets/…">` inside a prompt); the same path
 works in the bank and in every exam built from it. Any folder with this layout is a bank, so
@@ -150,6 +150,9 @@ The built `exam.json` has the same settings, with each question pointing to its 
 | `tree-array` | `task` (`layout`, `heap-insert`, `heap-remove`), `tree`, `heap` (`min`/`max`), `insert: [{id, label}]`, `slots` | `{"slots": ["A", null, ...]}` (`null` = X) | `{"slots": [...]}` (optional, computed from the tree / by simulating the heap if missing), `"scoring"` |
 | `sort-count` | `data: [numbers]`, `algorithm`, `order`, `count` (`swaps`/`comparisons`) | `{"value": 7}` | `{"value": 7}` (optional, computed) |
 | `sort-trace` | `data`, `algorithm`, `order`, `rows` (rows shown at the start, default 1) | `{"swaps": [[0, 4], [1, 2], null]}` | `{"swaps": [...]}` (optional, computed), `"scoring": "exact"` or `"prefix"` |
+| `heap-build` | `data: [numbers]`, `method` (`insert` or `bottom-up`), `heap` (`min`/`max`), `slots` | `{"slots": ["k3", "k0", null]}` (ids of the given keys) | — (computed), `"scoring": "exact"` or `"positional"` |
+| `hash-table` | `keys: [whole numbers]`, `size` (m), `probing` (`linear`, `quadratic`, `double`), `q` (double hashing) | `{"slots": ["k2", null, ...], "collisions": 6}` | — (computed), `"scoring": "partial"` or `"exact"`, `"countWeight"` (default 0.25) |
+| `radix-sort` | `data: [whole numbers]`, `base` (`decimal`/`binary`), `passes` (default 4) | `{"stages": [["k6", "k0", ...], ...]}` (one row per pass) | — (computed), `"scoring": "passes"`, `"positional"` or `"exact"` |
 
 All solution files may also have an `explanation` shown in practice mode.
 
@@ -175,6 +178,34 @@ the last. `sort-count` asks for one number (a digits-only box). `sort-trace` ask
 themselves: every row starts as a copy of the row above and the student makes one swap per
 row, adding rows as needed; `"scoring": "prefix"` gives credit for the swaps that are right
 before the first mistake.
+
+`heap-build`: build a heap from the given keys, either by **inserting them one at a time** in
+the given order (`"method": "insert"`) or with the **bottom-up construction** from the given
+array (`"method": "bottom-up"`); the student only sees the method you chose. The student drags
+the keys into numbered array cells and sees their array drawn as a tree as they go. A key moves
+only past a strictly larger (min-heap) / smaller (max-heap) key; in a sift-down it goes to the
+better child, the left one if both are equal. No pseudocode is shown. In practice mode the
+feedback lists every step.
+
+`hash-table`: insert the keys, in the given order, into a table of size m with h(k) = k mod m,
+and give the total number of collisions. A box above the question shows the hash function, an
+example of the mod operation for that m (with a number that is not one of the keys), the
+collision resolution and what counts as a collision: one for every probe that finds the cell
+taken. Linear probing tries h + 1, h + 2, …; quadratic h + 1, h + 4, h + 9, …; double hashing
+h + j·h′(k) with h′(k) = q − (k mod q) (`q` defaults to the largest prime below m). Under every key
+the student sees its h(k) in small print (and h′(k) for double hashing), so the question is about
+the probing, not the arithmetic. The student drags the keys into the table and types the count
+(digits only). With `"partial"` scoring the
+table earns 75 % of the points, in proportion to the keys in the right cell, and the count 25 %.
+The feedback traces the cells every key tried.
+
+`radix-sort`: LSD radix sort, showing the array after each of the first `passes` passes (one
+digit per pass, from the right; numbers with fewer digits get leading zeros, drawn faded). In
+binary every number shows its decimal value and its bits. Each pass row offers the numbers in the
+order of the row above, with that pass's digit highlighted, and the student clicks (or drags) them
+into their order after the pass. A pass is checked against the correct pass applied to the
+student's own previous row, so one mistake is not counted again in every later pass. The feedback
+lists the buckets of every pass.
 
 Prompts and explanations are HTML, so code can go in `<pre><code>…</code></pre>` (escape `<` as
 `&lt;`).

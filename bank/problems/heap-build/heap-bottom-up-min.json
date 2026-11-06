@@ -1,0 +1,16 @@
+{
+  "type": "heap-build",
+  "title": "Bottom-up construction of a min-heap",
+  "data": [
+    9,
+    4,
+    12,
+    7,
+    1,
+    8,
+    3,
+    10
+  ],
+  "method": "bottom-up",
+  "heap": "min"
+}

@@ -1,0 +1,4 @@
+{
+  "scoring": "passes",
+  "explanation": "Each pass puts the numbers whose bit is 0 first, then those whose bit is 1, keeping their order. After 4 passes the array is sorted by the last 4 bits only; a fifth pass would finish the sort."
+}

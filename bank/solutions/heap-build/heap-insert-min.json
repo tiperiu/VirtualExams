@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "Each key is added at the end and swapped with its parent while it is smaller."
+}

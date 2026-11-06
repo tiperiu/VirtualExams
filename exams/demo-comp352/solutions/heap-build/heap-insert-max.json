@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "The last key, 20, moves all the way up to the root. The array has 8 keys, so cells 8 and 9 stay X."
+}

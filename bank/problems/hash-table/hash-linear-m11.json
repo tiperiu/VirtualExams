@@ -1,0 +1,16 @@
+{
+  "type": "hash-table",
+  "title": "Hash table of size 11, linear probing",
+  "keys": [
+    27,
+    53,
+    13,
+    10,
+    38,
+    49,
+    24,
+    35
+  ],
+  "size": 11,
+  "probing": "linear"
+}

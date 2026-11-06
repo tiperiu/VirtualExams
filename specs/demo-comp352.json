@@ -16,7 +16,7 @@
   "mode": "practice",
   "date": "2026-11-10",
   "startTime": "10:15",
-  "durationMinutes": 75,
+  "durationMinutes": 105,
   "location": "Online",
   "studentIdPattern": "^\\d{8}$",
   "studentIdHint": "8-digit student ID",
@@ -93,6 +93,38 @@
     },
     {
       "problem": "sort-trace/sort-trace-hoare.json",
+      "points": 4
+    },
+    {
+      "problem": "heap-build/heap-insert-min.json",
+      "points": 3
+    },
+    {
+      "problem": "heap-build/heap-insert-max.json",
+      "points": 3
+    },
+    {
+      "problem": "heap-build/heap-bottom-up-min.json",
+      "points": 3
+    },
+    {
+      "problem": "heap-build/heap-bottom-up-max.json",
+      "points": 3
+    },
+    {
+      "problem": "hash-table/hash-linear-m11.json",
+      "points": 4
+    },
+    {
+      "problem": "hash-table/hash-double-m13.json",
+      "points": 4
+    },
+    {
+      "problem": "radix-sort/radix-decimal.json",
+      "points": 4
+    },
+    {
+      "problem": "radix-sort/radix-binary.json",
       "points": 4
     }
   ]

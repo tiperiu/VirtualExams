@@ -1,0 +1,17 @@
+{
+  "type": "heap-build",
+  "title": "Bottom-up construction of a max-heap",
+  "data": [
+    2,
+    7,
+    5,
+    11,
+    4,
+    13,
+    9,
+    3,
+    8
+  ],
+  "method": "bottom-up",
+  "heap": "max"
+}

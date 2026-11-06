@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace"}
+KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace", "heap-build", "hash-table", "radix-sort"}
 SORT_ALGORITHMS = {"selection", "insertion", "quicksort-hoare", "quicksort-lomuto"}
 
 
@@ -38,6 +38,53 @@ def asset_refs(obj) -> set:
             for v in x: walk(v)
     walk(obj)
     return found
+
+
+def check_heap_build(problem: dict) -> list:
+    """Problems that would make a heap-build question fail to load."""
+    errs = []
+    data = problem.get("data")
+    if not isinstance(data, list) or len(data) < 2 or not all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in data):
+        errs.append('"data" must be a list of at least 2 numbers')
+    if problem.get("method", "insert") not in ("insert", "bottom-up"):
+        errs.append('"method" must be "insert" or "bottom-up"')
+    if problem.get("heap", "min") not in ("min", "max"):
+        errs.append('"heap" must be "min" or "max"')
+    return errs
+
+
+def whole_numbers(x, minimum=1) -> bool:
+    return isinstance(x, list) and len(x) >= minimum and all(isinstance(v, int) and not isinstance(v, bool) and v >= 0 for v in x)
+
+
+def check_hash_table(problem: dict) -> list:
+    """Problems that would make a hash-table question fail to load (the simulation itself also
+    checks that every key can be placed)."""
+    errs = []
+    keys, size = problem.get("keys"), problem.get("size")
+    if not whole_numbers(keys):
+        errs.append('"keys" must be a list of non-negative whole numbers')
+    elif len(set(keys)) != len(keys):
+        errs.append("the keys must all be different")
+    if not isinstance(size, int) or isinstance(size, bool) or size < 2:
+        errs.append('"size" must be a whole number >= 2')
+    elif whole_numbers(keys) and len(keys) > size:
+        errs.append(f"{len(keys)} keys do not fit in a table of size {size}")
+    if problem.get("probing", "linear") not in ("linear", "quadratic", "double"):
+        errs.append('"probing" must be "linear", "quadratic" or "double"')
+    return errs
+
+
+def check_radix_sort(problem: dict) -> list:
+    errs = []
+    if not whole_numbers(problem.get("data"), 2):
+        errs.append('"data" must be a list of at least 2 non-negative whole numbers')
+    if problem.get("base", "decimal") not in ("decimal", "binary"):
+        errs.append('"base" must be "decimal" or "binary"')
+    passes = problem.get("passes", 4)
+    if not isinstance(passes, int) or not 1 <= passes <= 20:
+        errs.append('"passes" must be a whole number from 1 to 20')
+    return errs
 
 
 def check_sorting(problem: dict) -> list:
@@ -86,8 +133,10 @@ def pack(folder: Path, with_solutions: bool) -> None:
             warnings.append(f"{qid}: unknown type {qtype!r}")
         if q.get("type") and problem.get("type") and q["type"] != problem["type"]:
             warnings.append(f"{qid}: exam.json says {q['type']!r}, {q['problem']} says {problem['type']!r}")
-        if qtype in ("sort-count", "sort-trace"):
-            for e in check_sorting(problem):
+        checks = {"sort-count": check_sorting, "sort-trace": check_sorting, "heap-build": check_heap_build,
+                  "hash-table": check_hash_table, "radix-sort": check_radix_sort}
+        if qtype in checks:
+            for e in checks[qtype](problem):
                 if e.startswith("warning: "):
                     warnings.append(f"{qid}: {e[9:]}")
                 else:

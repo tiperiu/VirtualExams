@@ -371,6 +371,12 @@ button.st-cell:hover { border-color: var(--accent); }
 .hb-tree .tt-node { pointer-events: none; cursor: default; }
 .hb-tree-empty { color: var(--muted); font-size: 0.9rem; margin: 0; padding: 14px; border: 1px dashed #c9c9ce; border-radius: 8px; text-align: center; }
 .hb-steps { font-family: var(--mono); font-size: 0.85rem; }
+/* heap-tree: the tree as an array (read only) */
+.ht-array { overflow-x: auto; padding-bottom: 4px; }
+.ht-cells { border-collapse: collapse; font-family: var(--mono); }
+.ht-cells td { min-width: 2.4em; height: 2.2em; text-align: center; border: 1px solid #b9b9c0; padding: 0 4px; }
+.ht-cells td.ht-gap { background: repeating-linear-gradient(45deg, transparent 0 5px, rgba(0,0,0,.05) 5px 10px); }
+.ht-cells .ht-idx td { border: 0; height: auto; font-size: 0.75rem; color: var(--muted); }
 .hb-work { margin-top: 6px; }
 
 /* hash-table */

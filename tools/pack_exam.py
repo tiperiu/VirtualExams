@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace", "heap-build", "hash-table", "radix-sort", "bst-update", "asymptotic", "recursion", "graph-search", "transitive-closure", "floyd-warshall"}
+KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace", "heap-build", "hash-table", "radix-sort", "bst-update", "heap-tree", "asymptotic", "recursion", "graph-search", "transitive-closure", "floyd-warshall"}
 SORT_ALGORITHMS = {"selection", "insertion", "quicksort-hoare", "quicksort-lomuto"}
 
 
@@ -50,6 +50,20 @@ def check_heap_build(problem: dict) -> list:
         errs.append('"method" must be "insert" or "bottom-up"')
     if problem.get("heap", "min") not in ("min", "max"):
         errs.append('"heap" must be "min" or "max"')
+    return errs
+
+
+def check_heap_tree(problem: dict) -> list:
+    """Problems that would make a heap-tree question fail to load."""
+    errs = check_heap_build(problem)
+    data = problem.get("data")
+    if not errs:
+        if len(set(data)) != len(data):
+            errs.append("the keys must all be different (each key is a node of the tree)")
+        if len(data) > 31:
+            errs.append("at most 31 keys")
+    if "slots" in problem:
+        errs.append('warning: "slots" is not used by heap-tree (the student draws a tree)')
     return errs
 
 
@@ -221,7 +235,7 @@ def pack(folder: Path, with_solutions: bool) -> None:
             warnings.append(f"{qid}: unknown type {qtype!r}")
         if q.get("type") and problem.get("type") and q["type"] != problem["type"]:
             warnings.append(f"{qid}: exam.json says {q['type']!r}, {q['problem']} says {problem['type']!r}")
-        checks = {"sort-count": check_sorting, "sort-trace": check_sorting, "heap-build": check_heap_build,
+        checks = {"sort-count": check_sorting, "sort-trace": check_sorting, "heap-build": check_heap_build, "heap-tree": check_heap_tree,
                   "hash-table": check_hash_table, "radix-sort": check_radix_sort,
                   "bst-update": check_bst_update, "asymptotic": check_asymptotic,
                   "recursion": check_recursion,

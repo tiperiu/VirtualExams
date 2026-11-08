@@ -1,0 +1,4 @@
+{
+  "scoring": "positional",
+  "explanation": "Each key goes to the next free position of the last level (from the left) and is swapped with its parent while it is larger."
+}

@@ -140,6 +140,14 @@
       "points": 3
     },
     {
+      "problem": "heap-tree/heap-tree-insert-min.json",
+      "points": 3
+    },
+    {
+      "problem": "heap-tree/heap-tree-insert-max.json",
+      "points": 3
+    },
+    {
       "problem": "hash-table/hash-linear-m11.json",
       "points": 4
     },

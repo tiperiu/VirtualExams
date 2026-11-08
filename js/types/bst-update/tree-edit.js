@@ -10,6 +10,7 @@
 // - Delete/Backspace on a focused node removes it; "Start over" restores the starting tree.
 //
 //   const te = VE.treeEdit({ keys: [20, 30, 50], positions, initial, levels: 5, external: true, onChange(positions) {} });
+//     optional: mode: 'node' (a drag moves only the node; default 'subtree'), poolLabel, hint, answerLabel
 //   VE.drawPositions(positions, { external: true })   a static drawing
 (function (VE) {
 'use strict';
@@ -35,12 +36,12 @@ const orderOf = (p) => {
  * `levels` levels; external nodes are always shown.
  *   -> { canvas, spots: Map(path -> element), xOf: Map(path -> x in (0, 1)) }
  */
-function drawCanvas(pos, { levels = Infinity, external = false, onNode } = {}) {
+function drawCanvas(pos, { levels = Infinity, external = false, free = true, onNode } = {}) {
   const filled = Object.keys(pos);
   const shown = new Set(['']);
   for (const p of filled) {
     for (let i = 0; i <= p.length; i++) shown.add(p.slice(0, i));
-    if (external || p.length + 1 < levels) { shown.add(p + 'L'); shown.add(p + 'R'); }
+    if (free && (external || p.length + 1 < levels)) { shown.add(p + 'L'); shown.add(p + 'R'); }
   }
   const list = [...shown].sort((a, b) => orderOf(a) - orderOf(b));
   const cols = list.length;
@@ -94,9 +95,9 @@ function drawCanvas(pos, { levels = Infinity, external = false, onNode } = {}) {
   return { canvas, spots, xOf };
 }
 
-/** A static drawing of a { path: key } tree. */
-function drawPositions(pos, { external = false } = {}) {
-  return h('div', { class: 'tt-tree te-static', role: 'img', 'aria-label': 'Tree' }, drawCanvas(pos, { external }).canvas);
+/** A static drawing of a { path: key } tree (free: false leaves out the empty spots). */
+function drawPositions(pos, { external = false, free = true } = {}) {
+  return h('div', { class: 'tt-tree te-static', role: 'img', 'aria-label': 'Tree' }, drawCanvas(pos, { external, free }).canvas);
 }
 
 function treeEdit(opts) {
@@ -104,7 +105,7 @@ function treeEdit(opts) {
   const external = !!opts.external;
   const initial = { ...opts.initial };
   let pos = { ...opts.positions };
-  let mode = 'subtree';
+  let mode = opts.mode === 'node' ? 'node' : 'subtree';   // what dragging a node moves, at the start
 
   const pool = h('div', { class: 'af-pool te-pool', role: 'list', 'aria-label': 'Keys' });
   const count = h('span', { class: 'tt-count' });

@@ -74,7 +74,7 @@ function markingRule(q) {
     }
     case 'radix-sort': return s.scoring === 'exact' ? `${fmtPts(P)} for all passes right; otherwise 0.`
       : `${+(P / q.problem.passes || P / 4).toFixed(2)} per pass. Check each pass against the student's own previous row (follow-through): one mistake is not counted again.`;
-    case 'bst-update': return s.scoring === 'exact' ? `${fmtPts(P)} for the exact tree; otherwise 0.` : `In proportion to the keys in the right position (${fmtPts(P)} for all).`;
+    case 'bst-update': case 'heap-tree': return s.scoring === 'exact' ? `${fmtPts(P)} for the exact tree; otherwise 0.` : `In proportion to the keys in the right position (${fmtPts(P)} for all).`;
     case 'asymptotic': {
       const t = q.problem.task ?? 'relation';
       if (t === 'relation') return s.scoring === 'statements' ? `${+(P / 3).toFixed(2)} per statement correctly ticked or left empty.` : `${fmtPts(P)} if exactly the true statements are ticked; otherwise 0.`;
@@ -197,6 +197,18 @@ R['radix-sort'] = (q) => {
   const row = (order) => h('table', { class: `pp-cells${bin ? ' pp-wide' : ''}` }, h('tr', {}, s.data.map((_, i) => h('td', {}, order ? show(s.data[order[i]]) : ''))));
   const out = [prompt(q, p.prompt ?? VE.radixSort.defaultPrompt(p)), h('p', { class: 'pp-line' }, h('strong', {}, 'Input:')), row(s.data.map((_, i) => i))];
   truth.forEach((t, k) => out.push(h('p', { class: 'pp-line pp-tight' }, h('strong', {}, `After pass ${k + 1}`), ` — sorted by ${VE.radixSort.digitName(p, k)}:`), row(KEY ? t.order : null)));
+  return out;
+};
+
+R['heap-tree'] = (q) => {
+  const p = q.problem;
+  const sol = VE.heapTree.solve(p);
+  const s = sol.s;
+  const out = [prompt(q, p.prompt ?? VE.heapTree.defaultPrompt(p))];
+  if (s.method === 'insert') out.push(h('p', { class: 'pp-line' }, h('strong', {}, 'Keys, in insertion order: '), p.data.join(', ')));
+  else out.push(h('p', { class: 'pp-line' }, h('strong', {}, 'The initial array as a tree:')), h('div', { class: 'pp-tree' }, VE.drawPositions(sol.initial, { free: false })));
+  out.push(h('p', { class: 'pp-line' }, h('strong', {}, `The ${s.heap}-heap:`)),
+    KEY ? h('div', { class: 'pp-tree' }, VE.drawPositions(sol.final, { free: false })) : space(0.5 * (s.levels - 1) + 0.9));
   return out;
 };
 

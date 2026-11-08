@@ -1,0 +1,17 @@
+{
+  "type": "heap-tree",
+  "title": "Building a min-heap by insertions (tree)",
+  "data": [
+    20,
+    14,
+    9,
+    17,
+    6,
+    11,
+    3,
+    8,
+    2
+  ],
+  "method": "insert",
+  "heap": "min"
+}

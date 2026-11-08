@@ -29,6 +29,8 @@ const GRADER_SCRIPTS = [
   'js/types/radix-sort/grader.js',
   'js/types/bst-update/bst.js',
   'js/types/bst-update/grader.js',
+  'js/types/heap-tree/heap-tree.js',
+  'js/types/heap-tree/grader.js',
   'js/types/asymptotic/bigo.js',
   'js/types/asymptotic/asym.js',
   'js/types/asymptotic/grader.js',

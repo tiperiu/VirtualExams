@@ -36,7 +36,7 @@ bank/
 ```
 
 There is one subfolder per question type (`mcq`, `text`, `tree-traversal`, `tree-array`,
-`sort-count`, `sort-trace`, `heap-build`, `hash-table`, `radix-sort`, `bst-update`, `asymptotic`, `recursion`, `graph-search`, `transitive-closure`, `floyd-warshall`). The solution is a separate file so that it never has to reach the
+`sort-count`, `sort-trace`, `heap-build`, `hash-table`, `radix-sort`, `bst-update`, `heap-tree`, `asymptotic`, `recursion`, `graph-search`, `transitive-closure`, `floyd-warshall`). The solution is a separate file so that it never has to reach the
 students; it is found by the naming convention. Problems refer to assets by
 `"assets/<file>"` (the image field, or `<img src="assets/…">` inside a prompt); the same path
 works in the bank and in every exam built from it. Any folder with this layout is a bank, so
@@ -154,6 +154,7 @@ The built `exam.json` has the same settings, with each question pointing to its 
 | `hash-table` | `keys: [whole numbers]`, `size` (m), `probing` (`linear`, `quadratic`, `double`), `q` (double hashing) | `{"slots": ["k2", null, ...], "collisions": 6}` | — (computed), `"scoring": "partial"` or `"exact"`, `"countWeight"` (default 0.25) |
 | `radix-sort` | `data: [whole numbers]`, `base` (`decimal`/`binary`), `passes` (default 4) | `{"stages": [["k6", "k0", ...], ...]}` (one row per pass) | — (computed), `"scoring": "passes"`, `"positional"` or `"exact"` |
 | `bst-update` | `treeType` (`bst`/`avl`), `keys` (the starting tree, in insertion order), `operations: [{"insert": 35}, {"delete": 30}]`, `replaceWith` (`successor`/`predecessor`), `externalNodes` (default `true`) | `{"positions": {"": 50, "L": 30, "LR": 40}}` (path from the root → key) | — (computed), `"scoring": "positional"` or `"exact"` |
+| `heap-tree` | `data: [numbers]` (all different, at most 31), `method` (`insert` or `bottom-up`), `heap` (`min`/`max`) | `{"positions": {"": 2, "L": 6, "R": 3}}` (path from the root → key) | — (computed), `"scoring": "positional"` or `"exact"` |
 | `asymptotic` | `task`: `relation` (`f`, `g`), `tight` (`f`, `options`), `witness` (`relation`: `O`/`Omega`/`Theta`, `f`, `g`) or `rank` (`functions`); formulas as text, e.g. `"3n^2 + 5n log n + 17"` | `{"selected": ["Omega"]}`, `{"choice": 1}`, `{"c1": "4", "c2": "64", "n0": "1"}`, `{"order": [3, 5, 1, 2, 0, 4]}` | — (computed); relation `"exact"`/`"statements"`, rank `"pairs"`/`"exact"` |
 | `recursion` | `calls` (1 or 2), `reduction` (`"n-1"`, `"n-10"`, `"n/2"` …), `work` (`constant`/`linear`), `code` (optional; generated if missing) | `{"time": 5, "space": 2}` (indexes into the options, sorted by growth) | — (computed), `"scoring": "partial"` (half per answer) or `"exact"` |
 | `graph-search` | `algorithm` (`bfs`/`dfs`/`dijkstra`), `start`, `edges` (`"A-B 4, A-C 2"` or a list), `directed`, `weighted`, `restart` (DFS), `vertices`, `layout` | `{"order": ["A", "C", …], "d": {"A": "0", …}, "f": {…}}` | — (computed), `"scoring": "partial"` or `"exact"` |
@@ -192,6 +193,14 @@ the keys into numbered array cells and sees their array drawn as a tree as they 
 only past a strictly larger (min-heap) / smaller (max-heap) key; in a sift-down it goes to the
 better child, the left one if both are equal. No pseudocode is shown. In practice mode the
 feedback lists every step.
+
+`heap-tree`: the same constructions as `heap-build`, answered as a **tree** instead of an array.
+The student drags the keys onto the positions of a binary tree (one level more than the heap needs
+is offered, so the shape is not given away) and swaps two keys by dragging one node onto the other;
+the tree is shown as an array below it as they work. For `bottom-up`, the starting tree is the
+initial array, which the student rearranges ("Start over" brings it back). Partial credit is in
+proportion to the keys in the right position; the feedback also says when the tree is not complete
+or not in heap order.
 
 `hash-table`: insert the keys, in the given order, into a table of size m with h(k) = k mod m,
 and give the total number of collisions. A box above the question shows the hash function, an

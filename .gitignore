@@ -4,3 +4,6 @@ node_modules/
 submissions/
 *.graded.json
 __pycache__/
+
+# paper versions: the marking scheme must not be published
+exams/*-print/

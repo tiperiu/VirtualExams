@@ -1,0 +1,8 @@
+{
+  "type": "asymptotic",
+  "title": "Prove a Θ bound",
+  "task": "witness",
+  "relation": "Theta",
+  "f": "4n^2 + 10n log n + 50",
+  "g": "n^2"
+}

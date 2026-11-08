@@ -1,0 +1,54 @@
+{
+  "type": "graph-search",
+  "title": "Breadth-first search",
+  "algorithm": "bfs",
+  "start": "A",
+  "directed": false,
+  "weighted": false,
+  "edges": [
+    "A-B",
+    "A-C",
+    "B-D",
+    "B-E",
+    "C-E",
+    "C-F",
+    "D-G",
+    "E-G",
+    "F-H",
+    "G-H"
+  ],
+  "layout": {
+    "A": [
+      0,
+      0.5
+    ],
+    "B": [
+      0.27,
+      0.1
+    ],
+    "C": [
+      0.27,
+      0.9
+    ],
+    "D": [
+      0.55,
+      0
+    ],
+    "E": [
+      0.55,
+      0.5
+    ],
+    "F": [
+      0.55,
+      1
+    ],
+    "G": [
+      0.83,
+      0.25
+    ],
+    "H": [
+      1,
+      0.8
+    ]
+  }
+}

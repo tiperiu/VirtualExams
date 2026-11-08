@@ -1,0 +1,36 @@
+{
+  "type": "transitive-closure",
+  "title": "Transitive closure, step by step",
+  "directed": true,
+  "iterations": 4,
+  "edges": [
+    "A-B",
+    "B-C",
+    "C-A",
+    "C-E",
+    "D-A",
+    "E-D"
+  ],
+  "layout": {
+    "A": [
+      0.5,
+      0
+    ],
+    "B": [
+      1,
+      0.38
+    ],
+    "C": [
+      0.8,
+      1
+    ],
+    "D": [
+      0.2,
+      1
+    ],
+    "E": [
+      0,
+      0.38
+    ]
+  }
+}

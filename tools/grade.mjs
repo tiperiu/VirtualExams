@@ -29,6 +29,18 @@ const GRADER_SCRIPTS = [
   'js/types/radix-sort/grader.js',
   'js/types/bst-update/bst.js',
   'js/types/bst-update/grader.js',
+  'js/types/asymptotic/bigo.js',
+  'js/types/asymptotic/asym.js',
+  'js/types/asymptotic/grader.js',
+  'js/types/recursion/rec.js',
+  'js/types/recursion/grader.js',
+  'js/types/graph/graph.js',
+  'js/types/graph-search/search.js',
+  'js/types/graph-search/grader.js',
+  'js/types/transitive-closure/tc.js',
+  'js/types/transitive-closure/grader.js',
+  'js/types/floyd-warshall/fw.js',
+  'js/types/floyd-warshall/grader.js',
   'js/grading/grade-exam.js',
 ];
 const sandbox = vm.createContext({});

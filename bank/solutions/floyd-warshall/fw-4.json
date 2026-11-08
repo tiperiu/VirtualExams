@@ -1,0 +1,4 @@
+{
+  "scoring": "levels",
+  "explanation": "D<sup>(k)</sup>[i][j] = min(D<sup>(k−1)</sup>[i][j], D<sup>(k−1)</sup>[i][k] + D<sup>(k−1)</sup>[k][j]): only paths through the k-th vertex can improve. In D(3), B → D improves from 15 to 3 (B → C → D)."
+}

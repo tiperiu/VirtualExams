@@ -1,0 +1,4 @@
+{
+  "scoring": "exact",
+  "explanation": "The dominant term of f is 3n², which grows faster than n log n: n² / (n log n) = n / log n → ∞. So f is Ω(n log n), but not O(n log n), and therefore not Θ(n log n)."
+}

@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "sum(n) calls sum(n − 1), which calls sum(n − 2), …, down to sum(0): n + 1 calls, all on the stack at the same time when sum(0) is reached."
+}

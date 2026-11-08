@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace", "heap-build", "hash-table", "radix-sort", "bst-update"}
+KNOWN_TYPES = {"mcq", "text", "tree-traversal", "tree-array", "sort-count", "sort-trace", "heap-build", "hash-table", "radix-sort", "bst-update", "asymptotic", "recursion", "graph-search", "transitive-closure", "floyd-warshall"}
 SORT_ALGORITHMS = {"selection", "insertion", "quicksort-hoare", "quicksort-lomuto"}
 
 
@@ -122,6 +122,59 @@ def check_bst_update(problem: dict) -> list:
     return errs
 
 
+def check_asymptotic(problem: dict) -> list:
+    """The fields each task needs (the formulas themselves are checked when the question is shown)."""
+    task = problem.get("task", "relation")
+    need = {"relation": ["f", "g"], "tight": ["f", "options"], "witness": ["f", "g"], "rank": ["functions"]}
+    if task not in need:
+        return [f'"task" must be one of {sorted(need)}']
+    errs = []
+    for k in need[task]:
+        v = problem.get(k)
+        if k in ("options", "functions"):
+            if not isinstance(v, list) or len(v) < 2 or not all(isinstance(x, str) and x.strip() for x in v):
+                errs.append(f'"{k}" must list at least two formulas')
+        elif not isinstance(v, str) or not v.strip():
+            errs.append(f'"{k}" must be a formula in n')
+    if task == "witness" and problem.get("relation", "O") not in ("O", "Omega", "Theta"):
+        errs.append('"relation" must be "O", "Omega" or "Theta"')
+    return errs
+
+
+def check_recursion(problem: dict) -> list:
+    errs = []
+    if problem.get("calls", 1) not in (1, 2, 3):
+        errs.append('"calls" must be 1, 2 or 3')
+    if not re.fullmatch(r"n\s*(-\s*[1-9]\d*|/\s*([2-9]|[1-9]\d+))", str(problem.get("reduction", "n-1")).strip()):
+        errs.append('"reduction" must look like "n-1", "n-10" or "n/2"')
+    if problem.get("work", "constant") not in ("constant", "linear"):
+        errs.append('"work" must be "constant" or "linear"')
+    return errs
+
+
+EDGE_RE = re.compile(r"\s*([A-Za-z0-9_]+)\s*(?:->|→|-|–|,|\s)\s*([A-Za-z0-9_]+)\s*(?:[:=(]?\s*(-?\d+(?:\.\d+)?)\s*\)?)?\s*")
+
+
+def check_graph(problem: dict) -> list:
+    """The edge list of the graph types (the algorithms check the rest when the question is shown)."""
+    edges = problem.get("edges")
+    if isinstance(edges, str):
+        edges = [e for e in re.split(r"[,;\n]+", edges) if e.strip()]
+    if not isinstance(edges, list) or not edges:
+        return ['"edges" must list the edges, e.g. "A-B 4, A-C 2"']
+    errs = []
+    for e in edges:
+        if isinstance(e, list):
+            if len(e) < 2:
+                errs.append(f"edge {e}: needs two vertices")
+        elif not EDGE_RE.fullmatch(str(e)):
+            errs.append(f'edge "{e}": write it like "A-B" or "A-B 4"')
+    t = problem.get("type")
+    if t == "graph-search" and problem.get("algorithm", "bfs") not in ("bfs", "dfs", "dijkstra"):
+        errs.append('"algorithm" must be "bfs", "dfs" or "dijkstra"')
+    return errs
+
+
 def check_sorting(problem: dict) -> list:
     """Problems that would make a sorting question fail to load."""
     errs = []
@@ -170,7 +223,9 @@ def pack(folder: Path, with_solutions: bool) -> None:
             warnings.append(f"{qid}: exam.json says {q['type']!r}, {q['problem']} says {problem['type']!r}")
         checks = {"sort-count": check_sorting, "sort-trace": check_sorting, "heap-build": check_heap_build,
                   "hash-table": check_hash_table, "radix-sort": check_radix_sort,
-                  "bst-update": check_bst_update}
+                  "bst-update": check_bst_update, "asymptotic": check_asymptotic,
+                  "recursion": check_recursion,
+                  "graph-search": check_graph, "transitive-closure": check_graph, "floyd-warshall": check_graph}
         if qtype in checks:
             for e in checks[qtype](problem):
                 if e.startswith("warning: "):

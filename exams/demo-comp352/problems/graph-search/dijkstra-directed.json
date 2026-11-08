@@ -1,0 +1,45 @@
+{
+  "type": "graph-search",
+  "title": "Dijkstra's shortest paths",
+  "algorithm": "dijkstra",
+  "start": "A",
+  "directed": true,
+  "weighted": true,
+  "edges": [
+    "A-B 4",
+    "A-C 1",
+    "C-B 2",
+    "B-D 5",
+    "C-D 8",
+    "C-E 9",
+    "D-E 2",
+    "D-F 7",
+    "E-F 3"
+  ],
+  "layout": {
+    "A": [
+      0,
+      0.5
+    ],
+    "B": [
+      0.33,
+      0.05
+    ],
+    "C": [
+      0.33,
+      0.95
+    ],
+    "D": [
+      0.67,
+      0.05
+    ],
+    "E": [
+      0.67,
+      0.95
+    ],
+    "F": [
+      1,
+      0.5
+    ]
+  }
+}

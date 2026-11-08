@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "F and G cannot be reached from A, so the search restarts from F, the first vertex not visited yet; the clock keeps running (d(F) = 11)."
+}

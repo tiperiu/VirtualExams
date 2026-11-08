@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "power(x, n / 2) is called once and its result is reused (half * half), so there is only one recursive call per call. Calling power(x, n / 2) twice instead would make the running time Θ(n)."
+}

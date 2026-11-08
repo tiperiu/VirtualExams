@@ -10,7 +10,7 @@
   "mode": "practice",
   "date": "2026-11-10",
   "startTime": "10:15",
-  "durationMinutes": 125,
+  "durationMinutes": 165,
   "location": "Online",
   "studentIdPattern": "^\\d{8}$",
   "studentIdHint": "8-digit student ID",
@@ -23,206 +23,290 @@
   "questions": [
     {
       "id": "q1",
+      "type": "asymptotic",
+      "points": 3,
+      "problem": "problems/asymptotic/relation-nlogn.json",
+      "solution": "solutions/asymptotic/relation-nlogn.json"
+    },
+    {
+      "id": "q2",
+      "type": "asymptotic",
+      "points": 3,
+      "problem": "problems/asymptotic/witness-theta.json",
+      "solution": "solutions/asymptotic/witness-theta.json"
+    },
+    {
+      "id": "q3",
+      "type": "asymptotic",
+      "points": 3,
+      "problem": "problems/asymptotic/rank-growth.json",
+      "solution": "solutions/asymptotic/rank-growth.json"
+    },
+    {
+      "id": "q4",
       "type": "mcq",
       "points": 2,
       "problem": "problems/mcq/bst-successor.json",
       "solution": "solutions/mcq/bst-successor.json"
     },
     {
-      "id": "q2",
+      "id": "q5",
       "type": "mcq",
       "points": 1,
       "problem": "problems/mcq/complexity-easy.json",
       "solution": "solutions/mcq/complexity-easy.json"
     },
     {
-      "id": "q3",
+      "id": "q6",
       "type": "mcq",
       "points": 2,
       "problem": "problems/mcq/complexity-medium.json",
       "solution": "solutions/mcq/complexity-medium.json"
     },
     {
-      "id": "q4",
+      "id": "q7",
       "type": "mcq",
       "points": 3,
       "problem": "problems/mcq/complexity-hard.json",
       "solution": "solutions/mcq/complexity-hard.json"
     },
     {
-      "id": "q5",
+      "id": "q8",
       "type": "text",
       "points": 3,
       "problem": "problems/text/loop-complexity-text.json",
       "solution": "solutions/text/loop-complexity-text.json"
     },
     {
-      "id": "q6",
+      "id": "q9",
+      "type": "recursion",
+      "points": 3,
+      "problem": "problems/recursion/sum-linear.json",
+      "solution": "solutions/recursion/sum-linear.json"
+    },
+    {
+      "id": "q10",
+      "type": "recursion",
+      "points": 3,
+      "problem": "problems/recursion/step-by-ten.json",
+      "solution": "solutions/recursion/step-by-ten.json"
+    },
+    {
+      "id": "q11",
+      "type": "recursion",
+      "points": 3,
+      "problem": "problems/recursion/fast-power.json",
+      "solution": "solutions/recursion/fast-power.json"
+    },
+    {
+      "id": "q12",
+      "type": "recursion",
+      "points": 3,
+      "problem": "problems/recursion/hanoi-binary.json",
+      "solution": "solutions/recursion/hanoi-binary.json"
+    },
+    {
+      "id": "q13",
       "type": "tree-traversal",
       "points": 2,
       "problem": "problems/tree-traversal/preorder-binary.json",
       "solution": "solutions/tree-traversal/preorder-binary.json"
     },
     {
-      "id": "q7",
+      "id": "q14",
       "type": "tree-traversal",
       "points": 3,
       "problem": "problems/tree-traversal/postorder-bst.json",
       "solution": "solutions/tree-traversal/postorder-bst.json"
     },
     {
-      "id": "q8",
+      "id": "q15",
       "type": "tree-traversal",
       "points": 2,
       "problem": "problems/tree-traversal/inorder-binary.json",
       "solution": "solutions/tree-traversal/inorder-binary.json"
     },
     {
-      "id": "q9",
+      "id": "q16",
       "type": "tree-traversal",
       "points": 2,
       "problem": "problems/tree-traversal/preorder-general.json",
       "solution": "solutions/tree-traversal/preorder-general.json"
     },
     {
-      "id": "q10",
+      "id": "q17",
       "type": "tree-traversal",
       "points": 2,
       "problem": "problems/tree-traversal/postorder-expression.json",
       "solution": "solutions/tree-traversal/postorder-expression.json"
     },
     {
-      "id": "q11",
+      "id": "q18",
       "type": "tree-array",
       "points": 3,
       "problem": "problems/tree-array/tree-to-array.json",
       "solution": "solutions/tree-array/tree-to-array.json"
     },
     {
-      "id": "q12",
+      "id": "q19",
       "type": "tree-array",
       "points": 3,
       "problem": "problems/tree-array/heap-insert.json",
       "solution": "solutions/tree-array/heap-insert.json"
     },
     {
-      "id": "q13",
+      "id": "q20",
       "type": "tree-array",
       "points": 3,
       "problem": "problems/tree-array/heap-remove.json",
       "solution": "solutions/tree-array/heap-remove.json"
     },
     {
-      "id": "q14",
+      "id": "q21",
       "type": "sort-count",
       "points": 2,
       "problem": "problems/sort-count/sort-count-insertion.json",
       "solution": "solutions/sort-count/sort-count-insertion.json"
     },
     {
-      "id": "q15",
+      "id": "q22",
       "type": "sort-count",
       "points": 2,
       "problem": "problems/sort-count/sort-count-lomuto.json",
       "solution": "solutions/sort-count/sort-count-lomuto.json"
     },
     {
-      "id": "q16",
+      "id": "q23",
       "type": "sort-trace",
       "points": 3,
       "problem": "problems/sort-trace/sort-trace-selection.json",
       "solution": "solutions/sort-trace/sort-trace-selection.json"
     },
     {
-      "id": "q17",
+      "id": "q24",
       "type": "sort-trace",
       "points": 4,
       "problem": "problems/sort-trace/sort-trace-hoare.json",
       "solution": "solutions/sort-trace/sort-trace-hoare.json"
     },
     {
-      "id": "q18",
+      "id": "q25",
       "type": "heap-build",
       "points": 3,
       "problem": "problems/heap-build/heap-insert-min.json",
       "solution": "solutions/heap-build/heap-insert-min.json"
     },
     {
-      "id": "q19",
+      "id": "q26",
       "type": "heap-build",
       "points": 3,
       "problem": "problems/heap-build/heap-insert-max.json",
       "solution": "solutions/heap-build/heap-insert-max.json"
     },
     {
-      "id": "q20",
+      "id": "q27",
       "type": "heap-build",
       "points": 3,
       "problem": "problems/heap-build/heap-bottom-up-min.json",
       "solution": "solutions/heap-build/heap-bottom-up-min.json"
     },
     {
-      "id": "q21",
+      "id": "q28",
       "type": "heap-build",
       "points": 3,
       "problem": "problems/heap-build/heap-bottom-up-max.json",
       "solution": "solutions/heap-build/heap-bottom-up-max.json"
     },
     {
-      "id": "q22",
+      "id": "q29",
       "type": "hash-table",
       "points": 4,
       "problem": "problems/hash-table/hash-linear-m11.json",
       "solution": "solutions/hash-table/hash-linear-m11.json"
     },
     {
-      "id": "q23",
+      "id": "q30",
       "type": "hash-table",
       "points": 4,
       "problem": "problems/hash-table/hash-double-m13.json",
       "solution": "solutions/hash-table/hash-double-m13.json"
     },
     {
-      "id": "q24",
+      "id": "q31",
       "type": "radix-sort",
       "points": 4,
       "problem": "problems/radix-sort/radix-decimal.json",
       "solution": "solutions/radix-sort/radix-decimal.json"
     },
     {
-      "id": "q25",
+      "id": "q32",
       "type": "radix-sort",
       "points": 4,
       "problem": "problems/radix-sort/radix-binary.json",
       "solution": "solutions/radix-sort/radix-binary.json"
     },
     {
-      "id": "q26",
+      "id": "q33",
       "type": "bst-update",
       "points": 4,
       "problem": "problems/bst-update/bst-insert.json",
       "solution": "solutions/bst-update/bst-insert.json"
     },
     {
-      "id": "q27",
+      "id": "q34",
       "type": "bst-update",
       "points": 4,
       "problem": "problems/bst-update/bst-delete-two-children.json",
       "solution": "solutions/bst-update/bst-delete-two-children.json"
     },
     {
-      "id": "q28",
+      "id": "q35",
       "type": "bst-update",
       "points": 4,
       "problem": "problems/bst-update/avl-insert-double-rotation.json",
       "solution": "solutions/bst-update/avl-insert-double-rotation.json"
     },
     {
-      "id": "q29",
+      "id": "q36",
       "type": "bst-update",
       "points": 4,
       "problem": "problems/bst-update/avl-delete-rotation.json",
       "solution": "solutions/bst-update/avl-delete-rotation.json"
+    },
+    {
+      "id": "q37",
+      "type": "graph-search",
+      "points": 4,
+      "problem": "problems/graph-search/bfs-undirected.json",
+      "solution": "solutions/graph-search/bfs-undirected.json"
+    },
+    {
+      "id": "q38",
+      "type": "graph-search",
+      "points": 4,
+      "problem": "problems/graph-search/dfs-directed.json",
+      "solution": "solutions/graph-search/dfs-directed.json"
+    },
+    {
+      "id": "q39",
+      "type": "graph-search",
+      "points": 4,
+      "problem": "problems/graph-search/dijkstra-directed.json",
+      "solution": "solutions/graph-search/dijkstra-directed.json"
+    },
+    {
+      "id": "q40",
+      "type": "transitive-closure",
+      "points": 4,
+      "problem": "problems/transitive-closure/closure-5.json",
+      "solution": "solutions/transitive-closure/closure-5.json"
+    },
+    {
+      "id": "q41",
+      "type": "floyd-warshall",
+      "points": 4,
+      "problem": "problems/floyd-warshall/fw-4.json",
+      "solution": "solutions/floyd-warshall/fw-4.json"
     }
   ]
 }

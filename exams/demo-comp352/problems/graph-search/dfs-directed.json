@@ -1,0 +1,51 @@
+{
+  "type": "graph-search",
+  "title": "Depth-first search with timestamps",
+  "algorithm": "dfs",
+  "start": "A",
+  "directed": true,
+  "weighted": false,
+  "restart": true,
+  "edges": [
+    "A-B",
+    "A-D",
+    "B-C",
+    "B-E",
+    "C-A",
+    "D-E",
+    "E-C",
+    "F-E",
+    "F-G",
+    "G-D"
+  ],
+  "layout": {
+    "A": [
+      0,
+      0.5
+    ],
+    "B": [
+      0.3,
+      0.05
+    ],
+    "C": [
+      0.3,
+      0.95
+    ],
+    "D": [
+      0.62,
+      0.5
+    ],
+    "E": [
+      0.62,
+      0.05
+    ],
+    "F": [
+      1,
+      0.2
+    ],
+    "G": [
+      1,
+      0.85
+    ]
+  }
+}

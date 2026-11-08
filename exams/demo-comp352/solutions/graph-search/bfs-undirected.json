@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "BFS visits the graph level by level: first A, then its neighbours B and C (d = 1), then their new neighbours D, E, F (d = 2), then G and H (d = 3). E is a neighbour of both B and C, but it is added to the queue only once, by B."
+}

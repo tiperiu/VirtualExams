@@ -36,7 +36,7 @@ bank/
 ```
 
 There is one subfolder per question type (`mcq`, `text`, `tree-traversal`, `tree-array`,
-`sort-count`, `sort-trace`, `heap-build`, `hash-table`, `radix-sort`, `bst-update`). The solution is a separate file so that it never has to reach the
+`sort-count`, `sort-trace`, `heap-build`, `hash-table`, `radix-sort`, `bst-update`, `asymptotic`, `recursion`, `graph-search`, `transitive-closure`, `floyd-warshall`). The solution is a separate file so that it never has to reach the
 students; it is found by the naming convention. Problems refer to assets by
 `"assets/<file>"` (the image field, or `<img src="assets/…">` inside a prompt); the same path
 works in the bank and in every exam built from it. Any folder with this layout is a bank, so
@@ -154,6 +154,11 @@ The built `exam.json` has the same settings, with each question pointing to its 
 | `hash-table` | `keys: [whole numbers]`, `size` (m), `probing` (`linear`, `quadratic`, `double`), `q` (double hashing) | `{"slots": ["k2", null, ...], "collisions": 6}` | — (computed), `"scoring": "partial"` or `"exact"`, `"countWeight"` (default 0.25) |
 | `radix-sort` | `data: [whole numbers]`, `base` (`decimal`/`binary`), `passes` (default 4) | `{"stages": [["k6", "k0", ...], ...]}` (one row per pass) | — (computed), `"scoring": "passes"`, `"positional"` or `"exact"` |
 | `bst-update` | `treeType` (`bst`/`avl`), `keys` (the starting tree, in insertion order), `operations: [{"insert": 35}, {"delete": 30}]`, `replaceWith` (`successor`/`predecessor`), `externalNodes` (default `true`) | `{"positions": {"": 50, "L": 30, "LR": 40}}` (path from the root → key) | — (computed), `"scoring": "positional"` or `"exact"` |
+| `asymptotic` | `task`: `relation` (`f`, `g`), `tight` (`f`, `options`), `witness` (`relation`: `O`/`Omega`/`Theta`, `f`, `g`) or `rank` (`functions`); formulas as text, e.g. `"3n^2 + 5n log n + 17"` | `{"selected": ["Omega"]}`, `{"choice": 1}`, `{"c1": "4", "c2": "64", "n0": "1"}`, `{"order": [3, 5, 1, 2, 0, 4]}` | — (computed); relation `"exact"`/`"statements"`, rank `"pairs"`/`"exact"` |
+| `recursion` | `calls` (1 or 2), `reduction` (`"n-1"`, `"n-10"`, `"n/2"` …), `work` (`constant`/`linear`), `code` (optional; generated if missing) | `{"time": 5, "space": 2}` (indexes into the options, sorted by growth) | — (computed), `"scoring": "partial"` (half per answer) or `"exact"` |
+| `graph-search` | `algorithm` (`bfs`/`dfs`/`dijkstra`), `start`, `edges` (`"A-B 4, A-C 2"` or a list), `directed`, `weighted`, `restart` (DFS), `vertices`, `layout` | `{"order": ["A", "C", …], "d": {"A": "0", …}, "f": {…}}` | — (computed), `"scoring": "partial"` or `"exact"` |
+| `transitive-closure` | `edges`, `directed`, `iterations` (default 4), `vertices`, `layout` | `{"added": [["C>B", "D>B"], [], …]}` (one list per iteration) | — (computed), `"scoring": "iterations"` or `"exact"` |
+| `floyd-warshall` | `edges` (weighted), `directed`, `iterations` (default 3), `vertices`, `layout` | `{"levels": [{"1,3": "7"}, …]}` (changed cells per matrix) | — (computed), `"scoring": "levels"` or `"exact"` |
 
 All solution files may also have an `explanation` shown in practice mode.
 
@@ -220,6 +225,39 @@ external nodes as small empty squares; inserting means dropping a key on an exte
 the right place, and the feedback says when the student's tree is not a search tree or not
 balanced, and lists every step and rotation.
 
+`asymptotic`: Big-O, Ω and Θ, built on the engine of the COMP 352 web app `BigO_Quiz.html`
+(copied unchanged into `js/types/asymptotic/bigo.js`): a safe formula reader (no `eval`; `log` is
+base 2, also `ln`, `log10`, `sqrt`, `^`, `!`, implicit multiplication), evaluation that does not
+overflow for 2ⁿ or n!, the limit of f/g, and the definitions checked for every n ≥ n₀. Four tasks:
+`relation` (tick f = O(g), Ω(g), Θ(g)), `tight` (pick the simplest Θ bound among `options`; exactly
+one must be right), `witness` (prove the claim with c, or c₁ and c₂, and n₀; any constants that
+satisfy the definition are accepted, and a wrong proof gets the first n where it fails) and `rank`
+(order `functions` by growth with ▲ ▼; functions with the same growth may come in either order).
+All answers are computed, so a problem is just the formulas.
+
+`recursion`: the running time and the stack depth (space) of a recursive method, each chosen from a
+menu of tight bounds (Θ(1), Θ(log n), Θ(n), Θ(n log n), Θ(n²), Θ(2ⁿ), plus the right answer if it
+is not among them; `options` replaces the list). The problem describes the recursion — the number of
+recursive calls, how the argument shrinks and the work in one call — and the answers follow from the
+recurrence T(n) = a·T(n − k or n/b) + O(1 or n). Show your own `code` (sum, fast power, Hanoi …) and
+describe its recursion, or leave `code` out to show a generated method f(n). The feedback gives the
+recurrence, the number of calls and why the stack is that deep (the calls of binary recursion run one
+after the other, so the stack holds only one chain of calls).
+
+Graphs (`graph-search`, `transitive-closure`, `floyd-warshall`): the graph is given as an edge list
+(`"A-B"`, or `"A-B 4"` with a weight; in a directed graph `A-B` is A → B) and drawn from it, on a
+circle or at the positions in `layout` (`{"A": [0, 0.5], …}`, in the unit square). Ties are broken
+in the vertex order (alphabetical unless `vertices` is given), and the prompt says so.
+`graph-search` runs BFS, DFS or Dijkstra from `start`: the student drags the vertices into the order
+(added to the queue / discovered / removed from the priority queue) and types d (and f for DFS,
+with a clock that starts at 1; with `restart` the search continues from the first unvisited
+vertex, as in CLRS). `transitive-closure` shows one panel per iteration k (through the k-th vertex),
+in which the student draws the new edges by dragging from vertex to vertex. `floyd-warshall` shows
+D(0) and lets the student update the matrix for the first iterations; each matrix starts as a copy
+of the previous one. Both are graded with follow-through: each iteration is checked against the
+correct step applied to the student's own previous result. The feedback lists every step
+(the queue, the discoveries and finishes, the relaxations, the new edges, the changed cells).
+
 Prompts and explanations are HTML, so code can go in `<pre><code>…</code></pre>` (escape `<` as
 `&lt;`).
 
@@ -261,6 +299,31 @@ One file per student per exam, downloaded on submit as
 
 Answers are also autosaved in the browser's localStorage while the exam is in progress, so a
 reload does not lose them.
+
+## Paper version: exam and marking scheme PDFs
+
+```
+python3 tools/print_exam.py exams/demo-comp352/exam.json
+```
+
+writes two PDFs to `exams/demo-comp352-print/` (a folder next to the exam, never inside it, so the
+marking scheme is not published with a practice exam):
+
+- `<examId>-exam.pdf`: the department's paper template. The cover has the logo, the course, the
+  time, an empty date and instructors line, the instructions (with the number of pages), name / ID /
+  section lines and a marks table. Part A holds the one-letter questions (multiple choice), with an
+  answer box; Part B the others, with empty answer areas: arrays, tables, rows for the swaps, lines,
+  boxes to tick and space to draw trees. Every page after the first has "Student ID (last 4 digits)"
+  at the top and "Page X of N" at the bottom.
+- `<examId>-marking-scheme.pdf`: a summary table of all answers, then every question with the answer
+  filled in, how it is marked (points, partial credit) and a worked solution. The answers come from
+  the same code as the online exam, so they always match it.
+
+It renders the exam's own app code in headless Chrome, so it needs Playwright for Python once:
+`pip3 install playwright && python3 -m playwright install chromium`. Options: `--out DIR`,
+`--only exam|key`, `--instructions FILE` (one per line, HTML allowed, `{PAGES}` becomes the page
+count), `--department`, `--no-logo`, `--no-parts`. The HTML pages the PDFs are printed from stay in
+the output folder, so a page can also be printed from Chrome by hand.
 
 ## Next steps
 

@@ -1,0 +1,134 @@
+/* Paper version of an exam (js/print/print.js). Loaded after exam.css. */
+@page {
+  size: letter;
+  margin: 0.75in 0.8in 0.8in 0.8in;
+  @top-right { content: "Student ID (last 4 digits): ________"; font: 10pt "Times New Roman", Times, serif; color: #000; }
+  @bottom-right { content: var(--footer, "") "\A Page " counter(page) " of " counter(pages); white-space: pre; text-align: right;
+    font: 9.5pt "Times New Roman", Times, serif; color: #000; }
+}
+@page :first { @top-right { content: none; } }
+.key-mode { --x: 0; }
+
+html, body { background: #fff !important; }
+body.paper {
+  margin: 0; color: #000; font: 11.5pt/1.38 "Times New Roman", Times, serif;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+#paper { max-width: none; }
+body.paper strong { font-weight: 700; }
+body.paper code, body.paper pre { font-family: "Courier New", Courier, monospace; }
+body.paper .q-prompt { margin: 0 0 6px; }
+body.paper .prompt-text p { margin: 0 0 6px; }
+body.paper .prompt-text pre { background: #fff; border: 1px solid #999; border-radius: 0; padding: 6px 10px; font-size: 10pt; line-height: 1.35; margin: 6px 0 8px; }
+body.paper .q-figure { margin: 6px 0; text-align: center; }
+body.paper .q-figure img { max-width: 100%; }
+
+/* cover */
+.pp-cover { break-after: page; }
+.pp-cover-head { display: grid; grid-template-columns: 2.3in 1fr 2.1in; gap: 0 14px; align-items: start; margin-bottom: 18px; }
+.pp-dept { font-size: 9.5pt; text-align: center; }
+.pp-dept img { width: 2.1in; display: block; margin: 0 auto 3px; }
+.pp-course { font-weight: 700; font-size: 12.5pt; padding-top: 4px; }
+.pp-meta { font-size: 11.5pt; }
+.pp-examtype { font-weight: 700; font-size: 12.5pt; }
+.pp-fill { margin-top: 8px; font-size: 10.5pt; font-weight: 700; }
+.pp-instr { margin: 0 0 16px; padding-left: 1.4em; }
+.pp-instr li { margin: 0 0 8px; }
+.pp-instr li::marker { font-weight: 700; }
+.pp-ids p { margin: 0 0 14px; }
+.pp-markshead { font-weight: 700; margin: 14px 0 4px; }
+.pp-marks { border-collapse: collapse; width: 100%; }
+.pp-marks th, .pp-marks td { border: 1px solid #000; text-align: center; font-size: 10.5pt; padding: 4px 3px; }
+.pp-marks .pp-markrow td { height: 0.55in; }
+.pp-marks .pp-parttot { width: 1.1in; vertical-align: top; }
+.pp-markcell { height: 0.5in; }
+
+/* blanks, boxes, cells */
+.pp-blank { display: inline-block; border-bottom: 1px solid #000; height: 1.1em; vertical-align: bottom; }
+.pp-filled { border-bottom-color: #555; color: #8c1d32; font-weight: 700; height: auto; padding: 0 4px; }
+.pp-line { margin: 8px 0 4px; }
+.pp-tight { margin-top: 6px; }
+.pp-center { text-align: center; }
+.pp-note { margin: 4px 0; font-style: italic; font-size: 10.5pt; }
+.pp-space { border: 1px dashed #888; margin: 6px 0 4px; position: relative; break-inside: avoid; }
+.pp-space-label { position: absolute; top: 3px; left: 6px; font-size: 9pt; color: #666; font-style: italic; }
+.pp-cells { border-collapse: collapse; margin: 2px 0 6px; }
+.pp-cells td, .pp-cells th { border: 1px solid #000; min-width: 0.42in; height: 0.36in; text-align: center; font-size: 11pt; padding: 0 3px; }
+.pp-cells.pp-wide td { min-width: 0.62in; }
+.pp-cells .pp-idx td { border: none; height: auto; font-size: 8.5pt; color: #444; }
+.pp-cells .pp-mark { background: #e8e8e8; }
+.pp-keys th { font-weight: 700; background: #f2f2f2; min-width: 0.5in; }
+.pp-keys .pp-sub td, .pp-keys .pp-sub th { font-size: 9.5pt; height: 0.26in; color: #333; }
+.pp-num { display: inline-flex; flex-direction: column; line-height: 1.1; }
+.pp-bits { font-family: "Courier New", monospace; font-size: 9pt; letter-spacing: 0.04em; }
+.pp-trace { display: grid; grid-template-columns: auto 1fr; gap: 0 8px; align-items: center; }
+.pp-row-label { font-size: 9.5pt; color: #333; text-align: right; }
+.pp-trace .pp-cells { margin: 0; }
+.pp-trace .pp-cells:first-of-type { margin-bottom: 0; }
+.pp-box { display: inline-block; width: 0.17in; height: 0.17in; border: 1.2px solid #000; vertical-align: -2px; text-align: center; line-height: 0.15in; font-size: 10pt; color: #8c1d32; font-weight: 700; }
+.pp-choices { display: flex; flex-wrap: wrap; gap: 6px 26px; justify-content: center; margin: 8px 0; }
+.pp-choices.pp-left { justify-content: flex-start; display: inline-flex; gap: 4px 18px; }
+.pp-choice { white-space: nowrap; }
+.pp-menu { margin: 8px 0; }
+.pp-math-big { text-align: center; font-size: 14pt; margin: 6px 0 8px; }
+.pp-gap { display: inline-block; width: 0.5in; }
+.pp-const { margin: 0 18px; }
+.pp-rank { columns: 2; margin: 4px 0; }
+.pp-rank li { margin: 0 0 10px; }
+.pp-info { border: 1px solid #999; padding: 6px 10px; font-size: 10pt; margin: 6px 0; }
+.pp-info p { margin: 0 0 3px; }
+body.paper .math { font-family: "Times New Roman", Times, serif; }
+
+/* options */
+.pp-options { list-style: none; padding: 0; margin: 4px 0 4px 0.2in; }
+.pp-options li { margin: 0 0 3px; }
+.pp-options.pp-inline { display: flex; flex-wrap: wrap; gap: 4px 28px; }
+.pp-letter { font-weight: 700; }
+.pp-right { font-weight: 700; color: #8c1d32; }
+.pp-tick { color: #8c1d32; font-weight: 700; }
+
+/* questions */
+.pp-part h2 { font-size: 13pt; margin: 0 0 4px; }
+.pp-part p { margin: 0 0 10px; }
+.pp-break { break-after: page; }
+.pp-q { margin: 0 0 22px; break-inside: avoid; }
+.pp-qhead { font-size: 11.5pt; margin: 0 0 4px; display: flex; gap: 6px; align-items: baseline; }
+.pp-qtitle { font-weight: 400; font-style: italic; }
+.pp-ansbox { margin-left: auto; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.pp-ansfield { display: inline-block; width: 0.45in; height: 0.3in; border: 1.2px solid #000; }
+.pp-error { color: #b00; }
+
+/* trees: black and white */
+body.paper .pp-tree .tt-tree, body.paper .bu-start .tt-tree { border: none; background: none; padding: 0; margin: 2px 0 4px; }
+body.paper .tt-node { background: #fff !important; color: #000 !important; border: 1.4px solid #000 !important; box-shadow: none !important; }
+body.paper .tt-edges line { stroke: #000 !important; }
+body.paper .te-ext { border-color: #000; }
+body.paper .te-edge-ext { stroke: #000 !important; }
+body.paper .sort-code { background: #fff; border: 1px solid #999; }
+body.paper .sa-strip .sa-cell { background: #fff; border-color: #000; }
+
+/* marking scheme */
+.pp-key { border-left: 3px solid #8c1d32; background: #faf4f5; padding: 6px 10px; margin-top: 8px; font-size: 10.5pt; }
+.pp-key p { margin: 0 0 4px; }
+.pp-answer { font-family: "Courier New", monospace; white-space: pre-line; }
+.pp-expl { margin-top: 4px; }
+.pp-expl .hb-steps { display: block; font-family: "Courier New", monospace; font-size: 9.5pt; margin-top: 3px; }
+.pp-keycover { break-after: page; }
+.pp-keycover h1 { font-size: 18pt; margin: 0 0 4px; color: #8c1d32; }
+.pp-keysub { font-weight: 700; margin: 0 0 12px; }
+.pp-summary { border-collapse: collapse; width: 100%; font-size: 9.5pt; }
+.pp-summary th, .pp-summary td { border: 1px solid #999; padding: 3px 6px; text-align: left; vertical-align: top; }
+.pp-summary td:nth-child(2) { text-align: center; width: 0.6in; }
+.pp-summary td:nth-child(3) { font-family: "Courier New", monospace; white-space: pre-line; }
+/* trees a little smaller on paper */
+.pp-tree { zoom: 0.82; }
+.pp-mcq .pp-tree, .pp-mcq .q-figure { zoom: 0.9; }
+/* graphs on paper */
+.pp-graph { text-align: center; margin: 4px 0; }
+.pp-graph .gd { width: 4.3in; max-width: 100%; }
+body.paper .gd-v circle { stroke: #000; }
+body.paper .gd-edge { stroke: #000; }
+body.paper .gd-head { fill: #000; }
+.pp-fw-grid { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.pp-fw-title { font-weight: 700; font-size: 10.5pt; margin-bottom: 2px; }
+.pp-fw .pp-cells td { min-width: 0.4in; height: 0.3in; }

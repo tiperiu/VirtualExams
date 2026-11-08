@@ -1,0 +1,8 @@
+{
+  "type": "recursion",
+  "title": "Recursion: towers of Hanoi",
+  "calls": 2,
+  "reduction": "n-1",
+  "work": "constant",
+  "code": "void hanoi(int n, char from, char to, char via) {\n    if (n == 0) return;\n    hanoi(n - 1, from, via, to);\n    System.out.println(\"move disk \" + n + \" from \" + from + \" to \" + to);\n    hanoi(n - 1, via, to, from);\n}"
+}

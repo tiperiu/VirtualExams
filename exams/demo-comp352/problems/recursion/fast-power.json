@@ -1,0 +1,8 @@
+{
+  "type": "recursion",
+  "title": "Recursion: fast power",
+  "calls": 1,
+  "reduction": "n/2",
+  "work": "constant",
+  "code": "long power(long x, int n) {\n    if (n == 0) return 1;\n    long half = power(x, n / 2);\n    if (n % 2 == 0) return half * half;\n    return half * half * x;\n}"
+}

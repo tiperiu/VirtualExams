@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "C leaves the queue first (d = 1) and lowers d(B) from 4 to 3. Through B, D gets d = 8 (better than 9 through C). E keeps d = 10 (through C; through D it is also 10), and F gets 13 through E."
+}

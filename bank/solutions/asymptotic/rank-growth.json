@@ -1,0 +1,4 @@
+{
+  "scoring": "pairs",
+  "explanation": "The levels from the slides: log n < √n < n < n log n < n² < 2ⁿ. Note that 2^(log n) = n (log is base 2), so it is linear."
+}

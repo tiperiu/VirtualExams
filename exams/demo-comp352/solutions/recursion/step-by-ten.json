@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "Going down by 10 instead of 1 makes about n/10 calls instead of n: ten times fewer, but still proportional to n. Both the time and the stack depth stay Θ(n)."
+}

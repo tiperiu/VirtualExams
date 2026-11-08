@@ -16,7 +16,7 @@
   "mode": "practice",
   "date": "2026-11-10",
   "startTime": "10:15",
-  "durationMinutes": 125,
+  "durationMinutes": 165,
   "location": "Online",
   "studentIdPattern": "^\\d{8}$",
   "studentIdHint": "8-digit student ID",
@@ -27,6 +27,18 @@
     "Closed book. No calculators are needed."
   ],
   "questions": [
+    {
+      "problem": "asymptotic/relation-nlogn.json",
+      "points": 3
+    },
+    {
+      "problem": "asymptotic/witness-theta.json",
+      "points": 3
+    },
+    {
+      "problem": "asymptotic/rank-growth.json",
+      "points": 3
+    },
     {
       "problem": "mcq/bst-successor.json",
       "points": 2
@@ -45,6 +57,22 @@
     },
     {
       "problem": "text/loop-complexity-text.json",
+      "points": 3
+    },
+    {
+      "problem": "recursion/sum-linear.json",
+      "points": 3
+    },
+    {
+      "problem": "recursion/step-by-ten.json",
+      "points": 3
+    },
+    {
+      "problem": "recursion/fast-power.json",
+      "points": 3
+    },
+    {
+      "problem": "recursion/hanoi-binary.json",
       "points": 3
     },
     {
@@ -141,6 +169,26 @@
     },
     {
       "problem": "bst-update/avl-delete-rotation.json",
+      "points": 4
+    },
+    {
+      "problem": "graph-search/bfs-undirected.json",
+      "points": 4
+    },
+    {
+      "problem": "graph-search/dfs-directed.json",
+      "points": 4
+    },
+    {
+      "problem": "graph-search/dijkstra-directed.json",
+      "points": 4
+    },
+    {
+      "problem": "transitive-closure/closure-5.json",
+      "points": 4
+    },
+    {
+      "problem": "floyd-warshall/fw-4.json",
       "points": 4
     }
   ]

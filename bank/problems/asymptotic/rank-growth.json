@@ -1,0 +1,13 @@
+{
+  "type": "asymptotic",
+  "title": "Rank by growth rate",
+  "task": "rank",
+  "functions": [
+    "n^2",
+    "2^(log n)",
+    "n log n",
+    "log n",
+    "2^n",
+    "sqrt n"
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "scoring": "partial",
+  "explanation": "hanoi(n) makes 2ⁿ − 1 moves. The two recursive calls run one after the other: the first one returns, and its stack frames are gone, before the second one starts. So the stack holds at most n + 1 frames."
+}

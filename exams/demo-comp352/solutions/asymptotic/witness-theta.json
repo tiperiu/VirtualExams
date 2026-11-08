@@ -1,0 +1,3 @@
+{
+  "explanation": "Lower bound: every term is non-negative for n ≥ 1, so f(n) ≥ 4n² and c₁ = 4 works. Upper bound: n log n ≤ n² and 50 ≤ 50n² for n ≥ 1, so f(n) ≤ 4n² + 10n² + 50n² = 64n² and c₂ = 64, n₀ = 1 works. Smaller constants work too if n₀ is larger."
+}

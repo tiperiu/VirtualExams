@@ -1,0 +1,7 @@
+{
+  "type": "asymptotic",
+  "title": "O, Ω or Θ?",
+  "task": "relation",
+  "f": "3n^2 + 5n log n + 17",
+  "g": "n log n"
+}

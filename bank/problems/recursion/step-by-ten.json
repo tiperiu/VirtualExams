@@ -1,0 +1,8 @@
+{
+  "type": "recursion",
+  "title": "Recursion: steps of 10",
+  "calls": 1,
+  "reduction": "n-10",
+  "work": "constant",
+  "code": "void printEveryTenth(int n) {\n    if (n <= 0) return;\n    System.out.println(n);\n    printEveryTenth(n - 10);\n}"
+}

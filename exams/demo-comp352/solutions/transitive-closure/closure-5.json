@@ -1,0 +1,4 @@
+{
+  "scoring": "iterations",
+  "explanation": "In iteration k look at every pair of edges i → v<sub>k</sub> → j: if i → j is not an edge yet (and i ≠ j), add it. Edges added in an iteration are used in the next ones."
+}
